@@ -30,7 +30,7 @@ I also worked with David, my fellow summer intern, a little (it was his project)
 2. Created safe regexes or whitelists for staging terms, cassette (or slide) numbers, lymph nodes, and molecular markers.
 3. Tested on MIMIC notes. Even though the notes didn't have the pathology terms I was trying to rescue, I could use the MIMIC notes to refine my regexes and make sure they didn't catch non-pathology terms.
 4. Sent my code off to get tested on UCSF data.
-5. Edit/modify my safe regexes/whitelists, test on UCSF data, repeat.
+5. Edit/modify my safe regexes/whitelists, test on UCSF data, rinse and repeat.
 
 
 ## A closer look at the setup
