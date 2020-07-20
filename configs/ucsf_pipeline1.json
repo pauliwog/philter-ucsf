@@ -416,7 +416,7 @@
         "title": "mixed 10",
         "type": "regex",
         "exclude": true,
-        "filepath": "filters/regex/mrn_id/mixed_010_transformed.txt",
+        "filepath": "filters/regex/mrn_id/mixed_010.txt",
         "notes": "This should remove anything with weird number/letter mashups"
     },
     {
