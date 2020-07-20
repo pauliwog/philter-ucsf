@@ -19,7 +19,7 @@
 - ```filters/regex/gene_symbols/``` (the folder containing all the gene symbols safe regexes)
 - ```filters/regex/pathology/``` (the folder containing all the pathology terms safe regexes)
 
-### Stuff I've modified (see change-log for regexes at the bottom)
+### Stuff I've modified (additional modifications in the change-log for regexes at the bottom)
 
 - ```philter.py``` (added print statement on lines 490-491 (Philter-Zeta) or 555-556 (newest version I had access to) in ```map_regex()```, possibly unknown comments elsewhere)
 ```
@@ -31,11 +31,16 @@ if __debug__ and self.verbose:
 - ```configs/age_regex_test_updated.json``` (the json file was formatted incorrectly—it was missing the "[" and "]" at the beginning and end)
 
 ### Other stuff which I'm not sure about
-- ```generate_dataset/generate_modified_whitelist.py``` (this script will take a txt file and convert it to a json whitelist—I also modified it slightly to read newline separated .txt files (I got an error))
+- ```generate_dataset/generate_modified_whitelist.py``` (this script will take a txt file and convert it to a json whitelist—I also modified it slightly to read newline separated .txt files—I got an error)
 - [A link](https://docs.google.com/spreadsheets/d/1VAPUGfwussUGq8YE6B1NfRhOmuV5_I_BR4DMXHJtfXM/edit?usp=sharing) to details about the edits David and I made to the MIMIC notes (because of incorrect tags)
 
 ---
 ### Change-log for previously existing regexes
+- ```filters/regex/addresses/room_#.txt```
+- ```filters/regex/salutations/post_salutations_2chars.txt```
+- ```filters/regex/addresses/pharmacy_#.txt```
+
+---
 
 Changed ```filters/regex/addresses/room_#.txt``` from
 ```
