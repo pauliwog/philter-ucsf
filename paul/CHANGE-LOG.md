@@ -37,6 +37,17 @@ if __debug__ and self.verbose:
 ---
 ### Change-log for previously existing regexes
 
+Changed ```filters/regex/addresses/room_#.txt``` from
+```
+    \b((?i)[A-Z]\slevel(:)?\s)?((?i)room(:)?\s[a-z]+(\-)?\d+)\b
+```
+to
+```
+    (?i)\b((([A-Z]\s)?(level|lvl|floor|flr|fl|story|stry):?\s+[A-Z]?-?\d+\s)?(room|rm|suite|ste|apartment|aptment|apt)s?(\s+(number|num|nm)\.?)?:?(\,?\s+(and\s)?[A-Z]?-?\d+)+)\b
+```
+
+---
+
 Changed ```filters/regex/salutations/post_salutations_2chars.txt``` from
 ```
    \b(?<!M\.)(([A-Z]\.\s)?[A-Z]\'?[A-Z]?[\-aA-zZ]+(\,)?(\s[A-Z]{1,2}(.)?)?(\s[A-Z]{1,2}(.)?)?(\s[A-Z]\'?[A-Z]?[\-aA-zZ]+){1,2}(\s[A-Z]{1,2}(.)?)?|[A-Z]\.\s[a-zA-Z]+)((?=(\s|\,\s|\,)MD\sPhD\b)|(?=(\s|\,\s|\,)MD\b)|(?=(\s|\,\s|\,)NP\b)|(?=(\s|\,\s|\,)DO\b)|(?=(\s|\,\s|\,)RN\b)|(?=(\s|\,\s|\,)PA\b)|(?=(\s|\,\s|\,)PhD\b)|(?=(\s|\,\s|\,)OT\b)|(?=(\s|\,\s|\,)PT\b))
