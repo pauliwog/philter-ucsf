@@ -102,7 +102,7 @@ def compare_everything_else(indir, dir1, dir2, options):
                 line_data["start"] = line[3]
                 line_data["stop"] = line[4].strip()
 
-                filename = re.findall('\.\/[\S]+\/([\S]+?\.txt)', line_data["filepath"])[0]
+                filename = re.findall('[\S]+\/([\S]+?\.txt)', line_data["filepath"])[0]
 
                 # get the "match in context" from the original txt file passed through Philter
                 line_data["match in context"] = open(os.path.join(indir, filename)).read()[int(line_data["start"])-50 : int(line_data["stop"])+50].strip().replace("\n", "\\n")

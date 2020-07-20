@@ -1,1 +1,1 @@
-\b[A-Z][1-9][0-9]{0,2}(-[A-Z][1-9][0-9]{0,2})?(?=[\:\,\s])(?!\d{0,4}((\/|\-| )\d{1,4}))
+^(?!.*?\b(flat|Flat|FLAT|apartment|Apartment|APARTMENT|apt|Apt|APT|level|Level|LEVEL|lvl|Lvl|LVL|room|Room|ROOM|rm|Rm|RM|box|Box|BOX|suite|Suite|SUITE|ste|Ste|STE|floor|Floor|FLOOR|flr|Flr|FLR|fl|Fl|FL|number|Number|NUMBER|num|Num|NUM|nm|Nm|NM):?\s)[A-Z][1-9][0-9]{0,2}(\s?-\s?[A-Z][1-9][0-9]{0,2})?[\:\,\s](?!\d{0,4}((\/|\-| )\d{1,4}))

@@ -9,7 +9,7 @@ def pull_paths(inputfile):
     # get config filepaths which need to change
     with open(inputfile) as fin:
         text = fin.read()
-    filepaths = re.findall('raise Exception\(\"Config filepath does not exist\"\, pattern\[\"filepath\"\]\)\s+?Exception\: \(\'Config filepath does not exist\'\, \'([\S]+?)\'\)\s+\(deidproj\) NUS11097-10-pauburk\:philter-ucsf-new pauburk\$ python3 deidpipe\.py -i \.\/data\/i2b2_notes\/', text, re.MULTILINE)
+    filepaths = re.findall('raise Exception\(\"Config filepath does not exist\"\, pattern\[\"filepath\"\]\)\s+?Exception\: \(\'Config filepath does not exist\'\, \'([\S]+?)\'\)', text, re.MULTILINE)
 
     # go through each config file
     rootdir = "."

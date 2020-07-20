@@ -28,6 +28,7 @@ class Philter:
         self.filenames = []
         self.texts    = {}
         self.known_phi = {}
+        self.dynamic = False
         if "verbose" in config:
             self.verbose = config["verbose"]
         if "run_eval" in config:

@@ -23,14 +23,13 @@ I also worked with David, my fellow summer intern, a little (it was his project)
     - Whether Philter un-obscured the symbols or not would tell me how well the whitelist was working.
 4. Downloaded and set up newest version of Philter because the beta version was buggy when using xml annotations.
 5. Realized a big problem with the whitelist approach and created a safe regex to catch gene symbols before they got obscured.
-6. Ran MIMIC notes with annotations through Philter, with and without the whitelist and regexes and determined that the whitelist + safe regexes did work and did not impact recall!
+6. Merged my code with new latest version of Philter, then ran MIMIC notes with annotations through Philter, with and without the whitelist and regexes and determined that the whitelist + safe regexes did work (after a couple modifications) and did not impact recall! I then sent my code off to get tested on UCSF data.
 
 **Pathology project**
-1. Tried to find and download data ([mtsamples](https://www.mtsamples.com/)), decided to use the test set from MIMIC used for gene symbols.
-2. Created safe regexes for staging terms, cassette or slide numbers, lymph nodes, and molecular markers.
-3. Tested on MIMIC notes with xml annotations.
-    - Even though the notes didn't have the pathology terms I was trying to rescue, I could use the MIMIC notes to refine my regexes and make sure they didn't catch non-pathology terms.
-4. Sent my code off to get tested on UCSF data which had the pathology terms I was targeting.
+1. Tried to find and download data ([mtsamples](https://www.mtsamples.com/)), decided to use the MIMIC gene symbols test set instead.
+2. Created safe regexes or whitelists for staging terms, cassette (or slide) numbers, lymph nodes, and molecular markers.
+3. Tested on MIMIC notes. Even though the notes didn't have the pathology terms I was trying to rescue, I could use the MIMIC notes to refine my regexes and make sure they didn't catch non-pathology terms.
+4. Sent my code off to get tested on UCSF data.
 
 
 ## A closer look at the setup
@@ -40,8 +39,7 @@ Obtained access to MIMIC and i2b2 data sets (I just followed the instructions on
 - [Link to i2b2](https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/#).
 
 ### 2
-I forked and set up a repo of the beta version of Philter on GitHub, [link](https://github.com/BCHSI/philter-ucsf) to Philter-Beta and [my fork]() (containing the scripts I used).
-Then I set up Terminal on my Mac with Homebrew, python, etc—here's how I did it.
+I forked and set up a repo of the beta version of Philter on GitHub, [link](https://github.com/BCHSI/philter-ucsf) to Philter-Beta and [my repo](https://github.com/pauliwog/philter-ucsf) (not a fork of beta version, but a copy of the latest version of Philter containing the scripts I used). Then I set up Terminal on my Mac with Homebrew, python, etc—here's how I did it.
 1. Install command line tools: ```xcode-select --install```.
 2. Install [Homebrew](https://brew.sh/): ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"```.
 3. Update path for Homebrew : ```export PATH="/usr/local/opt/python/libexec/bin:$PATH"```.
@@ -58,11 +56,11 @@ When I installed Philter-Zeta, it came with a virtual environment, but it didn't
 ## A closer look at the gene symbols project
 ### 1
 1. There's this really nice website, [genenames.org](https://www.genenames.org/) (called HGNC), which has an easy, customizable form for downloading gene data ([link to data form](https://biomart.genenames.org/martform/#!/default/HGNC?datasets=hgnc_gene_mart)). It takes the data from NCBI gene banks (or other places if you so choose). I downloaded all the gene symbols and names from NCBI to compile into a list, which included approved, alias, and previous symbols and names for each gene.
-2. Once that was downloaded, I created a script ([HGNC_symbols_to_json.py]()) to extract the gene symbols from the HGNC download and create a json file containing each symbol, in the correct format for Philter to use as a whitelist. This script read the HGNC list and used regex to extract the gene symbols from it (the regex is tailored to the HGNC formatting, so it wouldn't work for a different download).
-3. Philter runs using a config file, which tells it what to do, and in what order. For example, Philter first goes through a bunch of regular expressions which identify values as phi, then uses whitelists to check the phi without a type to make sure no safe values were incorrectly identified. To get Philter to use the whitelist I created, I first duplicated the original config file ([philter_delta.json]()) and then added a section at the bottom (more details in step 5) to telling Philter to use the whitelist ([philter_delta_genes.json]()). I chose to create a separate test config file because it is easy to switch between config files when running Philter (the ``` -f ./path/to/configfile.json``` option).
+2. Once that was downloaded, I created a script ([HGNC_symbols_to_json.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/gene_identifiers/HGNC_symbols_to_json.py)) to extract the gene symbols from the HGNC download and create a json file containing each symbol, in the correct format for Philter to use as a whitelist. This script read the HGNC list and used regex to extract the gene symbols from it (the regex is tailored to the HGNC formatting, so it wouldn't work for a different download).
+3. Philter runs using a config file, which tells it what to do, and in what order. For example, Philter first goes through a bunch of regular expressions which identify values as phi, then uses whitelists to check the phi without a type to make sure no safe values were incorrectly identified. To get Philter to use the whitelist I created, I first duplicated the original config file and added a section at the bottom (more details in step 5) to telling Philter to use the whitelist ([my test config file](https://github.com/pauliwog/philter-ucsf/blob/master/configs/philter_zeta_genes.json)). I chose to create a separate test config file because it is easy to switch between config files when running Philter (the ``` -f ./path/to/configs.json``` option).
 
 ### 2, 3, and 4
-1. Next, I wanted a test set of data so I could see how well the whitelist did, so I compiled a list of 35 common gene symbols ([common_symbols.txt]()) to search for in the MIMIC notes.
+1. Next, I wanted a test set of data so I could see how well the whitelist did, so I compiled a list of 35 common gene symbols ([common_symbols.txt](https://github.com/pauliwog/philter-ucsf/blob/master/paul/common_symbols.txt)) to search for in the MIMIC notes.
 2. I then searched for those symbols in all the MIMIC notes using the Unix ```grep``` command and copied the notes containing the common symbols into a new directory.
 ```bash
    grep -l -r -w -f common_symbols.txt ./path/to/dir/containing/notes/to/search/in/ >> ./path/to/outputfile.txt
@@ -70,7 +68,7 @@ When I installed Philter-Zeta, it came with a virtual environment, but it didn't
 ```bash
    for file in `cat ./path/to/outputfile.txt`; do cp "$file" ./dir/where/you/want/the/files/containing/the/gene/symbols/to/go/ ; done
 ```
-3. After this was done, I ended up with ~20,000 notes, and running 20,000 notes through Philter all at once would take weeks on my laptop (and I didn't have enough memory anyway), so I created a short script ([batch.py]()) which took the notes and batched them into folders containing a variable number of notes each (I chose 1,000). I then ran these folders through original Philter (without the whitelist) five at a time. There's a reverse script to unbatch files which I created as well, [unbatch.py](). Here's the basic command I used to run Philter-Beta.
+3. After this was done, I ended up with ~20,000 notes, and running 20,000 notes through Philter all at once would take weeks on my laptop (and I didn't have enough memory anyway), so I created a short script ([batch.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/other/batch.py)) which took the notes and batched them into folders containing a variable number of notes each (I chose 1,000). I then ran these folders through original Philter (without the whitelist) five at a time. There's a reverse script to unbatch files which I created as well, [unbatch.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/other/unbatch.py). Here's the basic command I used to run Philter-Beta.
 ```bash
    python3 main.py -i ./path/to/input/dir/ -a ./path/to/anno/dir/ -o ./path/to/output/dir/ -f ./path/to/configfile.json -c ./path/to/coordsfile.json -e False >> ./path/to/outputfile.txt
 ```
@@ -78,7 +76,7 @@ When I installed Philter-Zeta, it came with a virtual environment, but it didn't
 ```bash
    grep -n -r -w -f symbols.txt ./dir/with/files/ >> ./path/to/anotheroutputfile.txt
 ```
-5. Using my script ([find_obscured_symbols.py]()) and the grep search from the previous step, I went through all the MIMIC notes I had annotated looking for notes containing obscured gene symbols. My script also has an option to copy the notes containing the symbols to a new directory, which I used. More details on the script can be found inside it (click the link above). _Original_ means the original, not annotated, not obscured, not run through Philter, notes. _Annotated_ means the notes which have been run through Philter and have phi obscured with asterisks.
+5. Using my script ([find_obscured_symbols.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/find_obscured_symbols.py)) and the grep search from the previous step, I went through all the MIMIC notes I had annotated looking for notes containing obscured gene symbols. My script also has an option to copy the notes containing the symbols to a new directory, which I used. More details on the script can be found inside it (click the link above). _Original_ means the original, not annotated, not obscured, not run through Philter, notes. _Annotated_ means the notes which have been run through Philter and have phi obscured with asterisks.
 ```bash
    python3 find_obscured_symbols.py -o ./path/to/dir/with/original/notes/ -a ./path/to/dir/with/annotated/notes/ -g ./path/to/grep/output/file/from/step/four.txt -s ./path/to/list/of/common_symbols.txt -c copy -d ./path/to/dir/where/notes/will/be/copied/to/
 ```
@@ -89,10 +87,10 @@ As described at the very top (2nd and 3rd paragraphs), the gene symbols whitelis
 
 The next logical step was to take a closer look at the regexes which were catching the symbols. To do so, I enabled the verbose option in Philter (```-v```) and added a print statement in philter.py, the main program. And when I subsequently ran Philter on several test notes, I found that multiple different regexes were catching the gene symbols :cry:. That meant to fix the problem I would have to edit multiple regexes. On top of that, some of them looked quite complicated.
 
-So instead, I decided to create a safe regex, one that would catch the gene symbols and tell Philter "DON'T OBSCURE THESE." To do so, I ran a grep search on the test notes so I could look at all the instances of gene symbols and find patterns which could be used to identify a symbol. Using those patterns, I created a regular expression to catch the gene symbols and mark them as safe. However, the regex I used to represent a gene symbol, ```[A-Z][A-Z0-9\-]+```, would not exclusively match gene symbols. To fix this problem, I modified a piece of code a previous intern had written which would take regex containing a "variable" and replace that variable with a long list of something (in my case gene symbols)—much easier than editing a regular expression with 2000 lines of symbols! Here's the [transform_gene_symbols.py]() code, and the [regex with the variable]() and [without]().
+So instead, I decided to create a safe regex, one that would catch the gene symbols and tell Philter "DON'T OBSCURE THESE." To do so, I ran a grep search on the test notes so I could look at all the instances of gene symbols and find patterns which could be used to identify a symbol. Using those patterns, I created a regular expression to catch the gene symbols and mark them as safe. However, the regex I used to represent a gene symbol, ```[A-Z][A-Z0-9\-]+```, would not exclusively match gene symbols. To fix this problem, I modified a piece of code a previous intern had written which would take regex containing a "variable" and replace that variable with a long list of something (in my case gene symbols)—much easier than editing a regular expression with 2000 lines of symbols! Here's the [transform_gene_symbols.py](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/transform_gene_symbols.py) code, and the [regex with the variable](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/gene_symbols/gene_symbols_safe_03.txt) and [without](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/gene_symbols/gene_symbols_safe_03_transformed.txt).
 
 ### 6
-I then tested my regex and whitelist on the MIMIC test set with annotations, modified my regex to be more specific, and then sent my code to Lakshmi so she could test it on the UCSF data. The results were...
+I then tested my regex and whitelist on the MIMIC test set with annotations, modified my regex to be more specific, and eventually got everything working! However, we wanted to test my additions to Philter (on the UCSF data) using the latest code, so I created a [change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul/CHANGE-LOG.md) so Lakshmi could merge my additions to the latest code (which I didn't have access to). Once the merge was completed, Lakshmi tested it on the UCSF data. The results were...
 
 
 ## A closer look at the pathology terms project

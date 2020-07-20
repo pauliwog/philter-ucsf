@@ -573,4 +573,4 @@ Traceback (most recent call last):
     self.init_patterns()
   File "/Volumes/HD-PATU3/UCSF Bakar internship/git-fork/philter-ucsf-new/philter.py", line 300, in init_patterns
     raise Exception("Config filepath does not exist", pattern["filepath"])
-Exception: ('Config filepath does not exist', 'filters/regex/mrn_id/mixed_010.txt')
+Exception: ('Config filepath does not exist', 'filters/regex/mrn_id/mixed_010_transformed.txt')
