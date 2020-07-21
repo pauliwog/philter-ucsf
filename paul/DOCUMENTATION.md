@@ -7,6 +7,9 @@ However, upon closer examination and testing, I discovered that multiple regular
 
 I also worked with David, my fellow summer intern, a little (it was his project) to create the correct xml annotations for the MIMIC notes. I only provided some advice and tested his results. The reason why I'm mentioning it is because having correct annotations is crucial to testing any sort of thing with Philter—they allow Philter to evaluate its performance. The annotations are in xml format, and contain for each phi in the clinical note the phi type, the actual value, the start and stop indices of the value(s), and an ID. For example, Philter, reading this annotation file, can identify actual phi it obscured (true positives), which values it obscured but were actually safe (false positives), etc, and calculate metrics about its performance. I needed annotations for my test set of notes in order to determine how much the whitelists/safe regexes helped.
 
+If some of my scripts are confusing, check out [details_on_scripts.md](https://github.com/pauliwog/philter-ucsf/blob/master/paul/details_on_scripts.md)!
+And here is [the change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul/CHANGE-LOG.md) which should have everything I added or modified.
+
 # What I did
 
 ### Overview
@@ -57,25 +60,25 @@ When I installed Philter-Zeta, it came with a virtual environment, but it didn't
 ## A closer look at the gene symbols project
 ### 1
 1. There's this really nice website, [genenames.org](https://www.genenames.org/) (called HGNC), which has an easy, customizable form for downloading gene data ([link to data form](https://biomart.genenames.org/martform/#!/default/HGNC?datasets=hgnc_gene_mart)). It takes the data from NCBI gene banks (or other places if you so choose). I downloaded all the gene symbols and names from NCBI to compile into a list, which included approved, alias, and previous symbols and names for each gene.
-2. Once that was downloaded, I created a script ([HGNC_symbols_to_json.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/gene_identifiers/HGNC_symbols_to_json.py)) to extract the gene symbols from the HGNC download and create a json file containing each symbol, in the correct format for Philter to use as a whitelist. This script read the HGNC list and used regex to extract the gene symbols from it (the regex is tailored to the HGNC formatting, so it wouldn't work for a different download).
+2. Once that was downloaded, I created a script ([HGNC_symbols_to_json.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/gene_symbols/HGNC_symbols_to_json.py)) to extract the gene symbols from the HGNC download and create a json file containing each symbol, in the correct format for Philter to use as a whitelist. This script read the HGNC list and used regex to extract the gene symbols from it (the regex is tailored to the HGNC formatting, so it wouldn't work for a different download).
 3. Philter runs using a config file, which tells it what to do, and in what order. To get Philter to use the whitelist I created, I first duplicated the original config file and added a section at the bottom (more details in step 5) telling Philter to use the whitelist ([my test config file](https://github.com/pauliwog/philter-ucsf/blob/master/configs/philter_zeta_genes.json)). I chose to create a separate test config file because it is easy to switch between config files when running Philter (the ``` -f ./path/to/configs.json``` option).
 
 ### 2, 3, and 4
 1. Next, I wanted a test set of data so I could see how well the whitelist did, so I compiled a list of 35 common gene symbols ([common_symbols.txt](https://github.com/pauliwog/philter-ucsf/blob/master/paul/common_symbols.txt)) to search for in the MIMIC notes.
 2. I then searched for those symbols in all the MIMIC notes using the Unix ```grep``` command and copied the notes containing the common symbols into a new directory.
 ```bash
-   grep -l -r -w -f common_symbols.txt ./path/to/dir/containing/notes/to/search/in/ >> ./path/to/outputfile.txt
+   grep -l -r -w -f common_symbols.txt ./path/to/dir/containing/notes/to/search/in/ > ./path/to/outputfile.txt
 ```
 ```bash
    for file in `cat ./path/to/outputfile.txt`; do cp "$file" ./dir/where/you/want/the/files/containing/the/gene/symbols/to/go/ ; done
 ```
 3. After this was done, I ended up with ~20,000 notes, and running 20,000 notes through Philter all at once would take weeks on my laptop (and I didn't have enough memory anyway), so I created a short script ([batch.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/other_scripts/batch.py)) which took the notes and batched them into folders containing a variable number of notes each (I chose 1,000). I then ran these folders through original Philter (without the whitelist) five at a time. There's a reverse script to unbatch files which I created as well, [unbatch.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/other_scripts/unbatch.py). Here's the basic command I used to run Philter-Beta.
 ```bash
-   python3 main.py -i ./path/to/input/dir/ -a ./path/to/anno/dir/ -o ./path/to/output/dir/ -f ./path/to/configfile.json -c ./path/to/coordsfile.json -e False >> ./path/to/outputfile.txt
+   python3 main.py -i ./path/to/input/dir/ -a ./path/to/anno/dir/ -o ./path/to/output/dir/ -f ./path/to/configfile.json -c ./path/to/coordsfile.json -e False > ./path/to/outputfile.txt
 ```
 4. Next, I compared the before and after notes (before and after Philter annotations) to find the notes containing gene symbols obscured by Philter. These notes would become the test set for the whitelist. I originally designed my script which identified obscured gene symbols to use another grep search, so sorry if you are duplicating my process—you're going to need to do another grep :disappointed: (or you could write your own script).
 ```bash
-   grep -n -r -w -f symbols.txt ./dir/with/files/ >> ./path/to/anotheroutputfile.txt
+   grep -n -r -w -f common_symbols.txt ./dir/with/files/ > ./path/to/anotheroutputfile.txt
 ```
 5. Using my script ([find_obscured_symbols.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/other_scripts/find_obscured_symbols.py)) and the grep search from the previous step, I went through all the MIMIC notes I had annotated looking for notes containing obscured gene symbols. My script also has an option to copy the notes containing the symbols to a new directory, which I used. More details on the script can be found inside it (click the link above). _Original_ means the original, not annotated, not obscured, not run through Philter, notes. _Annotated_ means the notes which have been run through Philter and have phi obscured with asterisks.
 ```bash
@@ -106,7 +109,7 @@ When I first started looking at the pathology terms, Lakshmi had provided me wit
 ```
 Metastatic  adenocarcinoma in eleven of sixteen lymph nodes (11/16).
 ```
-4. **Molecular markers.** [Link](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/pathology/molecular_markers_safe_transformed.txt) to safe regex. These were rather confusing. I was provided with two examples, one containing the protein "Ki-67", and the other "MLH1, MSH2, MSH6, and PMS2". Funnily enough, those four terms in the second note are all gene symbols. When I did some research to try to find a list or even more examples of molecular markers, I got a bunch of funny lists of proteins or polypeptides (whatever you want to call them). These lists often included gene symbols or molecular markers in the descriptions for the main term. The whole thing was rather confusing—there wasn't really a good definition of what a "molecular marker" was, and no definite lists of them (without more examples, we couldn't create a regex based on the surrounding context). So, in consultation with Lakshmi, I decided to reuse the gene symbols safe regex, although checking for different words surrounding the match—based on the two examples I had. A next step for molecular markers would be to try to flesh out the list of terms more, perhaps using some of the lists provided below and adding some of the values found in the "name" column and the "description" column.
+4. **Molecular markers.** [Link](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/pathology/molecular_markers_safe_transformed.txt) to safe regex. These were rather confusing. I was provided with two examples, one containing the protein "Ki-67", and the other "MLH1, MSH2, MSH6, and PMS2". Funnily enough, those four terms in the second note are all gene symbols. When I did some research to try to find a list or even more examples of molecular markers, I got a bunch of funny lists of proteins or polypeptides (whatever you want to call them). These lists often included gene symbols or molecular markers in the descriptions for the main term. The whole thing was rather confusing—there wasn't really a good definition of what a "molecular marker" was, and no definite lists of them (without more examples, we couldn't create a regex based on the surrounding context). So, in consultation with Lakshmi, I decided to reuse the gene symbols safe regex, although checking for different words surrounding the match—based on the two examples I had. I used the same replacing a variable with a list technique as well ([transform_pathology_terms.py](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/transform_pathology_terms.py)). A next step for molecular markers would be to try to flesh out the list of terms more, perhaps using some of the lists provided below and adding some of the values found in the "name" column and the "description" column.
     - [Human Protein Reference Database](http://www.hprd.org/).
     - [Protein Atlas](https://www.proteinatlas.org/search).
     - [Peptide Atlas](http://www.peptideatlas.org/#).
@@ -115,7 +118,5 @@ Metastatic  adenocarcinoma in eleven of sixteen lymph nodes (11/16).
 ### Thats it!
 
 I hope this is helpful—I had a lot of fun working on these projects!
-
-Thanks,
 
 Paul

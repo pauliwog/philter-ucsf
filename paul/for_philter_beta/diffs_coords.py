@@ -86,17 +86,17 @@ def main():
         were un-obscured because of the whitelist). Outputs to a stdout.
     """
     ap = argparse.ArgumentParser(description=help_str)
-    ap.add_argument("-wl", "--coords_whitelist",
-                    default="../../data/coords_whitelist.json",
-                    help="""The coordinates file for the Philter run with the
-                            whitelist. Default is
-                            '../../data/coords_whitelist.json'.""",
-                    type=str)
     ap.add_argument("-og", "--coords_original",
                     default="../../data/coords_original.json",
                     help="""The coordinates file for the Philter run without
                             the whitelist. Default is
                             '../../data/coords_original.json'.""",
+                    type=str)
+    ap.add_argument("-wl", "--coords_whitelist",
+                    default="../../data/coords_whitelist.json",
+                    help="""The coordinates file for the Philter run with the
+                            whitelist. Default is
+                            '../../data/coords_whitelist.json'.""",
                     type=str)
 
     args = ap.parse_args()
