@@ -13,7 +13,7 @@ I also worked with David, my fellow summer intern, a little (it was his project)
 
 If some of my scripts are confusing, check out [details_on_scripts.md](https://github.com/pauliwog/philter-ucsf/blob/master/paul/details_on_scripts.md).
 
-Here is [my change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul/CHANGE-LOG.md) which should have everything I added or modified.
+Here is [my change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul/CHANGE_LOG.md) which should have everything I added or modified.
 
 If any questions arise about my documentation, code, or really anything, feel free to email me at burke.invent@gmail.com (not a link it's just blue for some reason).
 
