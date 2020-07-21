@@ -1,3 +1,8 @@
+Add
+- required libraries
+- contact information
+- figures?
+
 # Who am I and what I worked on
 I'm Paul, a high school summer intern who worked remotely at the UCSF Bakar Computational Health Sciences Institute in summer 2020 on Philter. Philter is a clinical de-identification software which removes protected health information (phi) from clinical notes to make the data in the notes more readily available to the scientific community. I worked on implementing whitelists and safe regexes for gene symbols and pathology terms to address the issue of Philter obscuring these symbols and terms. Gene symbols and pathology terms (eg. BRCA1) were obscured by Philter because the values have similarities to person names.
 
