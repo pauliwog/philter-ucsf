@@ -48,7 +48,7 @@ Changed ```filters/regex/addresses/room_#.txt``` from
 ```
 to
 ```
-    (?i)\b((([A-Z]\s)?(level|lvl|floor|flr|fl|story|stry):?\s+[A-Z]?-?\d+\s)?(room|rm|suite|ste|apartment|aptment|apt)s?(\s+(number|num|nm)\.?)?:?(\,?\s+(and\s)?[A-Z]?-?\d+)+)\b
+    (?i)\b(((([A-Z]\s)?(level|lvl|floor|flr|fl|story|stry):?\s+[A-Z]?-?\d+\,?\s)?(room|rm|suite|ste|apartment|aptment|apt)s?(\s(number|num|nm)\.?)?:?(\,?\s(and\s)?[A-Z]?-?\d+)+)|(((room|rm|suite|ste|apartment|aptment|apt)s?(\s(number|num|nm)\.?)?:?(\,?\s(and\s)?[A-Z]?-?\d+)+)(\,?\s([A-Z]\s)?(level|lvl|floor|flr|fl|story|stry):?\s+[A-Z]?-?\d+)?))\b
 ```
 
 ---

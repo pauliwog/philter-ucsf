@@ -1,6 +1,4 @@
 Add
-- required libraries
-- contact information
 - figures?
 - next steps
 
@@ -13,8 +11,11 @@ However, upon closer examination and testing, I discovered that multiple regular
 
 I also worked with David, my fellow summer intern, a little (it was his project) to create the correct xml annotations for the MIMIC notes. I only provided some advice and tested his results. The reason why I'm mentioning it is because having correct annotations is crucial to testing any sort of thing with Philter—they allow Philter to evaluate its performance. The annotations are in xml format, and contain for each phi in the clinical note the phi type, the actual value, the start and stop indices of the value(s), and an ID. For example, Philter, reading this annotation file, can identify actual phi it obscured (true positives), which values it obscured but were actually safe (false positives), etc, and calculate metrics about its performance. I needed annotations for my test set of notes in order to determine how much the whitelists/safe regexes helped.
 
-If some of my scripts are confusing, check out [details_on_scripts.md](https://github.com/pauliwog/philter-ucsf/blob/master/paul/details_on_scripts.md)!
-And here is [the change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul/CHANGE-LOG.md) which should have everything I added or modified.
+If some of my scripts are confusing, check out [details_on_scripts.md](https://github.com/pauliwog/philter-ucsf/blob/master/paul/details_on_scripts.md).
+
+Here is [my change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul/CHANGE-LOG.md) which should have everything I added or modified.
+
+If any questions arise about my documentation, code, or really anything, feel free to email me at burke.invent@gmail.com (not a link it's just blue for some reason).
 
 # What I did
 
@@ -40,6 +41,17 @@ And here is [the change-log](https://github.com/pauliwog/philter-ucsf/blob/maste
 3. Tested on MIMIC notes. Even though the notes didn't have the pathology terms I was trying to rescue, I could use the MIMIC notes to refine my regexes and make sure they didn't catch non-pathology terms.
 4. Sent my code off to get tested on UCSF data.
 5. Edit/modify my safe regexes/whitelists, test on UCSF data, rinse and repeat.
+
+**Required libraries**
+1. ```argparse``` to provide run-time options so user doesn't have to change variables in the script
+2. ```time``` to time how long scripts take to run
+3. ```pandas``` for using dataframes for a bunch of things
+4. ```os``` for interacting with files
+5. ```shutil``` also for interacting with files
+6. ```re``` for lots of things, generally extracting information
+7. ```json``` for reading and writing json files
+8. ```etree from lxml``` for extracting text between xml tags (extract_from_xml.py)
+9. ```json_normalize from pandas.io.json``` to unpack nested json
 
 
 ## A closer look at the setup
