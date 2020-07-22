@@ -1,4 +1,4 @@
-Add
+To add
 - figures?
 - next steps
 
@@ -18,6 +18,8 @@ Here is [my change-log](https://github.com/pauliwog/philter-ucsf/blob/master/pau
 If you are curious and want to see what I did every day, you can check out [this google doc](https://docs.google.com/document/d/1R0CZyHlFhXny1KTAiDswyUyNCPmuKjYGK685wO2t_ug/edit?usp=sharing) with more of my planning and notes.
 
 If any questions arise about my documentation, code, or really anything, feel free to email me at burke.invent@gmail.com (not a link it's just blue for some reason).
+
+And if for some reason you have access to my documentation but not my git repo, email me and I'll add you as a collaborator!
 
 # What I did
 
