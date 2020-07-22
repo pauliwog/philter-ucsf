@@ -79,7 +79,7 @@ This script is also for the beta version of Philter, and it too reads the coordi
 - ```-wl```: the path to the coords.json file for the 2nd (for me whitelisted) Philter run
 
 #### ```get_new_terms.py```
-This script reads in two .tsv files (```stains_hgnc.tsv``` and ```stains_umls.tsv```), containing common pathology terms provided by Dima (Dmytro) Lituiev and appends them to the current gene symbols whitelist (creating a new json file of course).
+This script reads in two .tsv files (```stains_hgnc.tsv``` and ```stains_umls.tsv```), containing common pathology terms provided by Dima (Dmytro) Lituiev and appends all terms which match ```[A-Z0-9\-]``` to the current gene symbols whitelist (creating a new json file of course).
 - ```-f1```: the path to the first .tsv file
 - ```-f2```: the path to the second .tsv file
 - ```-wl```: the path to the current gene symbols whitelist

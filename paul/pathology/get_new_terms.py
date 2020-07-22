@@ -1,29 +1,31 @@
+# extracts terms which match [A-Z0-9\-] from two .tsv files provided by Dima (Dmytro) Lituiev
+
 import re
 import json
 import argparse
 
+# extracts and creates a dictionary or list (depending on whitelist format) of gene symbols
 def extract(fin1, fin2):
 
-    symbols_list = {}
+    symbols_list = {} # list of new symbols
 
     with open(fin1) as fin:
         f1_text = fin.read()
     with open(fin2) as fin:
         f2_text = fin.read()
 
-    symbols_pattern = re.compile("[A-Z][A-Z0-9\-]+")
+    symbols_pattern = re.compile("[A-Z][A-Z0-9\-]+") # regex for catching new terms
 
-    f1_symbols = symbols_pattern.findall(f1_text)
-    f2_symbols = symbols_pattern.findall(f2_text)
+    f1_symbols = symbols_pattern.findall(f1_text) # get list of terms from file 1
+    f2_symbols = symbols_pattern.findall(f2_text) # get list of terms from file 2
 
-
-    for symbol in f1_symbols:
-        symbol = re.sub("(^-)|(-$)", "", symbol)
+    for symbol in f1_symbols: #
+        symbol = re.sub("(^-)(-$)", "", symbol)
         if symbol not in symbols_list:
             symbols_list[symbol] = 1
 
     for symbol in f2_symbols:
-        symbol = re.sub("(^-)|(-$)", "", symbol)
+        symbol = re.sub("(^-)(-$)", "", symbol)
         if symbol not in symbols_list:
             symbols_list[symbol] = 1
 
