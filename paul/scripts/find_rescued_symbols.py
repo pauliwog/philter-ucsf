@@ -79,9 +79,9 @@ def setup_symbols(symbolslist):
 def setup_output():
 
     ans = "y"
-    if os.path.isdir("./find_unobscured_symbols_out"):
+    if os.path.isdir("./find_rescued_symbols_out"):
         print("\nThis program will replace already existing files:")
-        print("  -  The directory and all contents 'find_unobscured_symbols_out' in ", os. getcwd())
+        print("  -  The directory and all contents 'find_rescued_symbols_out' in ", os. getcwd())
 
         acceptable = ["y", "Y", "yes", "Yes", "YES", "ye", "n", "N", "no", "No", "NO"]
         while True:
@@ -96,11 +96,11 @@ def setup_output():
         return False
 
     try:
-        shutil.rmtree("find_unobscured_symbols_out")
-        print("\nReplaced previous directory: ", "'./find_unobscured_symbols_out/'")
+        shutil.rmtree("find_rescued_symbols_out")
+        print("\nReplaced previous directory: ", "'./find_rescued_symbols_out/'")
     except:
         pass
-    os.mkdir("find_unobscured_symbols_out")
+    os.mkdir("find_rescued_symbols_out")
     return True
 
 
@@ -171,29 +171,29 @@ def output(rpaths, rout, rnames, rsmbs):
 
     if count == 0:
         # output if there are no recovered gene symbols
-        with open("find_unobscured_symbols_out/out_paths.txt", "w") as fpaths:
+        with open("find_rescued_symbols_out/out_paths.txt", "w") as fpaths:
                 fpaths.write("No recovered symbols exist.")
-        with open("find_unobscured_symbols_out/out.txt", "w") as fout:
+        with open("find_rescued_symbols_out/out.txt", "w") as fout:
             fpaths.write("No recovered symbols exist.")
-        with open("find_unobscured_symbols_out/out_names.txt", "w") as fnames:
+        with open("find_rescued_symbols_out/out_names.txt", "w") as fnames:
             fpaths.write("No recovered symbols exist.")
-        with open("find_unobscured_symbols_out/out_symbols.txt", "w") as fsmbs:
+        with open("find_rescued_symbols_out/out_symbols.txt", "w") as fsmbs:
             fpaths.write("No recovered symbols exist.")
     else:
         # regular output
-        with open("find_unobscured_symbols_out/out_paths.txt", "w") as fpaths:
+        with open("find_rescued_symbols_out/out_paths.txt", "w") as fpaths:
             for path in rpaths:
                 fpaths.write(path)
                 fpaths.write("\n")
-        with open("find_unobscured_symbols_out/out.txt", "w") as fout:
+        with open("find_rescued_symbols_out/out.txt", "w") as fout:
             for item in rout:
                 fout.write(item)
                 fout.write("\n")
-        with open("find_unobscured_symbols_out/out_names.txt", "w") as fnames:
+        with open("find_rescued_symbols_out/out_names.txt", "w") as fnames:
             for name in rnames:
                 fnames.write(name)
                 fnames.write("\n")
-        with open("find_unobscured_symbols_out/out_symbols.txt", "w") as fsmbs:
+        with open("find_rescued_symbols_out/out_symbols.txt", "w") as fsmbs:
             for smb in rsmbs:
                 fsmbs.write(smb)
                 fsmbs.write("\n")

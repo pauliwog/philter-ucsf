@@ -1,13 +1,13 @@
 # Details on my scripts
 1. ```paul/gene_symbols/HGNC_symbols_to_json.py```
 2. ```paul/gene_symbols/notes_mini_create.py```
-3. ```paul/other_scripts/batch.py```
-4. ```paul/other_scripts/unbatch.py```
-5. ```paul/other_scripts/cleanup_verbose_out.py```
-6. ```paul/other_scripts/compare_results.py```
-7. ```paul/other_scripts/extract_from_xml.py```
-8. ```paul/other_scripts/find_obscured_symbols.py```
-9. ```paul/other_scripts/find_unobscured_symbols.py```
+3. ```paul/scripts/batch.py```
+4. ```paul/scripts/unbatch.py```
+5. ```paul/scripts/cleanup_verbose_out.py```
+6. ```paul/scripts/compare_results.py```
+7. ```paul/scripts/extract_from_xml.py```
+8. ```paul/scripts/find_obscured_symbols.py```
+9. ```paul/scripts/find_rescued_symbols.py```
 10. ```paul/for_philter_beta/diffs_coords.py```
 11. ```paul/for_philter_beta/get_stats.py```
 12. ```filters/regex/transform_gene_symbols.py```
@@ -60,7 +60,7 @@ This script compares two sets of notes, original vs. annotated, to figure out wh
    grep -n -r -w -f common_symbols.txt ./dir/with/files/ > ./path/to/outputfile.txt
 ```
 
-#### ```find_unobscured_symbols.py```
+#### ```find_rescued_symbols.py```
 This script compares two sets of notes, annotated without modifications vs. with modifications (in my case, without whitelists and safe regexes vs. with), to find the gene symbols which got rescued by the modifications. It will output the symbol, file path, line number, and context for each un-obscured symbol.
 - ```-o```: the path to the dir containing the annotated notes _without_ modifications
 - ```-a```: the path to the dir containing the annotated notes _with_ modifications
