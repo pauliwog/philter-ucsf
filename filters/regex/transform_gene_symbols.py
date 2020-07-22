@@ -6,7 +6,7 @@ import json
 # Define regex variables
 
 # Get gene symbols from json whitelist
-symbols_json = json.loads(open("../whitelists/whitelist_gene_symbols.json").read())
+symbols_json = json.loads(open("../whitelists/whitelist_genes_and_patho_terms.json").read())
 gene_symbols = ''
 for key in symbols_json:
 	gene_symbols += key + '|'

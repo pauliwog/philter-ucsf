@@ -50,14 +50,14 @@ def parse(inputfilename):
 def main():
 
     ap = argparse.ArgumentParser()
-    ap.add_argument("-i", "--inputfilename", type=str)
+    ap.add_argument("-i", "--inputfilename", type=str) # path to Philter's output .txt file
     args = ap.parse_args()
 
     fin = args.inputfilename
     fout = fin[:-4]+"_transformed.txt"
 
     text_zeta_genes = parse(fin)
-    
+
     with open(fout, "w") as fout:
         for line in text_zeta_genes:
             fout.write(line)
