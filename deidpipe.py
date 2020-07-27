@@ -6,6 +6,7 @@ from pymongo import MongoClient
 from phitexts import Phitexts
 import os
 import json
+import time
 
 # TODO: replace this by Python's POSIX complaint versions
 EXIT_SUCCESS = 0
@@ -15,19 +16,19 @@ EXIT_FAILURE = -1
 def get_args():
     # gets input/output/filename
     help_str = """De-identify all text files in a folder"""
-    
+
     ap = argparse.ArgumentParser(description=help_str)
 
-    ap.add_argument("-i", "--input", 
+    ap.add_argument("-i", "--input",
                     help="Path to the directory or the file that contains the PHI note, the default is ./data/i2b2_notes/",
                     type=str)
-    ap.add_argument("-o", "--output", 
+    ap.add_argument("-o", "--output",
                     help="Path to the directory to save PHI-reduced notes, the default is ./data/i2b2_results/",
                     type=str)
     ap.add_argument("-f", "--filters", default="./configs/philter_alpha.json",
                     help="Path to the config file, the default is ./configs/philter_alpha.json",
                     type=str)
-    ap.add_argument("-s", "--surrogate_info", 
+    ap.add_argument("-s", "--surrogate_info",
                     help="Path to the tsv file that contains the surrogate info"
                           + " per note key",
                     type=str)
@@ -37,7 +38,7 @@ def get_args():
     ap.add_argument("-k", "--dynamic_blacklist",
                     help="Path to the probes file, if path to file is absent dynamic blacklist does not get generated",
                     type=str)
-    ap.add_argument("-m", "--mongodb", 
+    ap.add_argument("-m", "--mongodb",
                     help="When mongo config file is provided the pipeline will use mongodb to get input text, surrogation meta data and write out deid text",
                     type=str)
     ap.add_argument("-l", "--log", default=True,
@@ -68,7 +69,7 @@ def read_mongo_config(mongofile):
     if not os.path.exists(mongofile):
        raise Exception("Filepath does not exist", mongofile)
     mongo_details = json.loads(open(mongofile,"r").read())
-    return mongo_details    
+    return mongo_details
 
 def get_mongo_handle(mongo):
     client = MongoClient(mongo["client"],username=mongo["username"],password=mongo["password"])
@@ -82,6 +83,8 @@ def get_mongo_handle(mongo):
 
 
 def main():
+
+    start_time = time.time()
 
     # assumes notes have been shredded into subdirectories such as
     # 000/000/000/000000000001.txt
@@ -104,9 +107,11 @@ def main():
        print("In no args.mongo")
        main_mongo(args)
 
-def main_mongo(args, db=None ,mongo=None):  
+    print("Completed in %s seconds." % (str(time.time() - start_time)))
+
+def main_mongo(args, db=None ,mongo=None):
     # initializes texts container
-    # db none then pass input dir if not don't pass input dir 
+    # db none then pass input dir if not don't pass input dir
     batch = 0
     if args.batch is not None:
        batch = int(args.batch)
@@ -115,7 +120,7 @@ def main_mongo(args, db=None ,mongo=None):
     if __debug__: print("detecting PHI coordinates")
     if args.xml:
        if __debug__: print("Generating coordinate map from xml")
-       phitexts.detect_xml_phi()       
+       phitexts.detect_xml_phi()
     elif args.dynamic_blacklist:
 
        phitexts.detect_phi(args.filters, args.dynamic_blacklist,
@@ -129,16 +134,16 @@ def main_mongo(args, db=None ,mongo=None):
             phitexts.detect_phi_types()
 
         # normalizes PHI
-        
+
         if __debug__: print("normalizing PHI")
         phitexts.normalize_phi()
-        
+
         # looks-up surrogate and apply to normalized PHI
         if mongo is not None:
            if args.surrogate_info:
               print("WARNING: Surrogate meta file and mongodb were passed as arguments. Ignoring surrogate meta file and using mongodb")
            if __debug__: print("looking up surrogates")
-           phitexts.substitute_phi(mongo, db) 
+           phitexts.substitute_phi(mongo, db)
         elif args.surrogate_info:
             if __debug__: print("looking up surrogates")
             phitexts.substitute_phi(args.surrogate_info)
@@ -161,7 +166,7 @@ def main_mongo(args, db=None ,mongo=None):
        phitexts.save(args.output, use_deid_note_key=args.deid_filename,
                suf="", ext="txt")
 
-    # print and save log 
+    # print and save log
     if args.log:
        failed_date,eval_table,phi_table,phi_count_df,csv_summary_df,batch_summary_df,dynamic_blacklist_df = phitexts.print_log(args.dynamic_blacklist, mongo, args.xml)
        if mongo is not None:
