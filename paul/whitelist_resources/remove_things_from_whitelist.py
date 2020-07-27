@@ -168,7 +168,7 @@ def check_wl(names, wl_in, con): # con is confirmation
             for name in removed_values:
                 del wl_dict[name]
 
-            new_wl = wl_in[:-5]+"_new.json"
+            new_wl = "remove_things_from_whitelist_out/"+wl_in.split("/")[-1]
             with open(new_wl, "w") as fout:
                 json.dump(wl_dict, fout)
 
