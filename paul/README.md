@@ -1,8 +1,14 @@
 # A couple notes
-- Some of the code in this directory was created to work with Philter-Beta, so it might require adjustment to work with this newer version of Philter
-- Here's a [link](https://github.com/pauliwog/philter-data) to the data I used
+- Some of the code in this directory was created to work with Philter-Beta, so it might require adjustment to work with a newer version of Philter
+- Here's a [link](https://github.com/pauliwog/philter-data) to all the data I used—MIMIC, i2b2, pathology examples, etc—email me at burke.invent@gmail.com to get access
+- If a file has whitespace in the name (eg. ```for philter beta (obsolete)```) it's extra and not important
 - ```DOCUMENTATION.md``` is, funnily enough, my documentation :grin:
-- ```CHANGE-LOG.md``` contains everything I modified/added
+- ```CHANGE-LOG.md``` contains everything I modified/added from the original Philter fork :fork_and_knife:
 - ```details_on_scripts.md``` contains details about my scripts!
-- ```blank.json``` is a blank json file just in case I needed it
-- ```common_symbols.txt``` contains the symbols I used to find my test set of MIMIC clinical notes
+- ```common_symbols.txt``` contains the symbols I used to make my test set of clinical notes
+- ```'for philter beta (obsolete)'/``` contains old scripts/statistics which might come in handy
+- ```gene_symbols/``` contains files I used to make the gene symbols whitelist
+- ```mimic_data/``` contains files I created when making the test set of clinical notes
+- ```pathology/``` contains files I used when working on rescuing pathology terms
+- ```prune_whitelist/``` contains mostly files from a previous intern plus one or two of my things for removing common english words/names from a whitelist
+- ```scripts/``` contains scripts I wrote and their output—these are for lots of things (more details in details_on_scripts.md)

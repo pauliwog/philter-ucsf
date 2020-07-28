@@ -1,15 +1,19 @@
-To add
-- figures?
-- next steps
+To add:
+- Figures?
+- Next steps
 
 # Who am I and what I worked on
-I'm Paul, a high school summer intern who worked remotely at the UCSF Bakar Computational Health Sciences Institute in summer 2020 on Philter. Philter is a clinical de-identification software which removes protected health information (phi) from clinical notes to make the data in the notes more readily available to the scientific community. I worked on implementing whitelists and safe regexes for gene symbols and pathology terms to address the issue of Philter obscuring these symbols and terms. Gene symbols and pathology terms (eg. BRCA1) were obscured by Philter because the values have similarities to person names.
+I'm Paul, a rising junior in high school, and I worked remotely at the UCSF Bakar Computational Health Sciences Institute on Philter as a summer intern in 2020. Philter is a clinical de-identification software which removes protected health information (phi) from clinical notes to make the data in the notes more readily available to the scientific community. Philter stands for "Protected Health Information filter." I implemented whitelists and safe regexes for gene symbols and pathology terms to address the issue of Philter obscuring these symbols and terms. Gene symbols and pathology terms (eg. BRCA1) were obscured by Philter because they have similarities to person names. Specifically, I tackled gene symbols, staging terms, cassette/slide numbers, lymph nodes, and molecular markers.
 
-Whitelists get used near the end of the pipeline, after Philter has identified the phi. The whitelists might contain values which are actually phi, so running the whitelist at the end allows values to be identified as phi before they would have been incorrectly identified as safe by the whitelist. What whitelists do is prevent the "catch-all" at the end of the pipeline (which obscures all the identified phi without a type) from obscuring safe words which were tagged as phis without a type. Introducing gene symbols and pathology terms whitelists would theoretically prevent Philter from obscuring the gene symbols and pathology terms present in the clinical notes.
+<img align="right" width=40% src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41746-020-0258-y/MediaObjects/41746_2020_258_Fig1_HTML.png?as=webp">
 
-However, upon closer examination and testing, I discovered that multiple regular expressions earlier in the pipeline tagged the gene symbols with a type—which meant that the whitelist never had a chance to un-tag-as-phi the symbols. To fix this, I created a "safe" regex which I put into the pipeline ahead of the regexes which were obscuring gene symbols. This "safe" regex would get to the gene symbols ahead of the other regexes and mark them as safe. I used the same technique of creating a safe regex to address the incorrect obscuring of some pathology terms.
+Philter follows a pipeline comprised of different methods which identify values as “safe” or “phi.” Those methods are pattern matching, blacklists, and whitelists. Philter is a rule based algorithm—so the order in which the "rules" are applied matters. The general pipeline order is (1) safe regexes, (2) PHI regexes, (3) blacklists, (4) whitelists, (5) the catch-all (not in the config file.) See the image below to the right as an example (image from [https://www.nature.com/articles/s41746-020-0258-y](https://www.nature.com/articles/s41746-020-0258-y)).
 
-I also worked with David, my fellow summer intern, a little (it was his project) to create the correct xml annotations for the MIMIC notes. I only provided some advice and tested his results. The reason why I'm mentioning it is because having correct annotations is crucial to testing any sort of thing with Philter—they allow Philter to evaluate its performance. The annotations are in xml format, and contain for each phi in the clinical note the phi type, the actual value, the start and stop indices of the value(s), and an ID. For example, Philter, reading this annotation file, can identify actual phi it obscured (true positives), which values it obscured but were actually safe (false positives), etc, and calculate metrics about its performance. I needed annotations for my test set of notes in order to determine how much the whitelists/safe regexes helped.
+Whitelists get used near the end of the pipeline, after Philter has identified the phi. The whitelists might contain values which are actually phi, so putting the whitelist at the end allows values to be identified as phi before they would have been incorrectly flagged as safe by the whitelist. What whitelists do is prevent the "catch-all" at the end of the pipeline (which obscures everything not marked as safe) from obscuring the safe values in the whitelist. Introducing gene symbols and pathology terms whitelists would theoretically prevent Philter from obscuring the gene symbols and pathology terms present in the clinical notes.
+
+However, upon closer examination and testing, I discovered that multiple regular expressions earlier in the pipeline tagged the gene symbols as names—which meant that the whitelist never had a chance to tag the symbols as safe. To fix this, I created a "safe" regex which I put into the pipeline ahead of the regexes which were obscuring gene symbols. This "safe" regex would get to the gene symbols ahead of the other regexes and mark them as safe. I used the same technique of creating a safe regex or whitelist to address the incorrect obscuring of some pathology terms.
+
+I also worked with David, my fellow summer intern, a little (it was his project) to create the correct xml annotations for the MIMIC notes. I only provided some advice and tested his results. The reason why I'm mentioning it is because having correct annotations is crucial to testing any sort of thing with Philter—they allow Philter to evaluate its performance. The annotations are in xml format, and contain for each phi in the note the phi type, the actual value, the start and stop indices of the value(s), and an ID. For example, Philter, reading this annotation file, can identify actual phi it obscured (true positives), which values it obscured but were actually safe (false positives), etc, and calculate metrics about its performance. I needed annotations for my test set of notes in order to determine how much the whitelists/safe regexes helped.
 
 If some of my scripts are confusing, check out [details_on_scripts.md](https://github.com/pauliwog/philter-ucsf/blob/master/paul/details_on_scripts.md).
 
@@ -136,6 +140,8 @@ Metastatic  adenocarcinoma in eleven of sixteen lymph nodes (11/16).
     - [Protein Atlas](https://www.proteinatlas.org/search).
     - [Peptide Atlas](http://www.peptideatlas.org/#).
     - [Uniprot](https://www.uniprot.org/uniprot/) (my favorite).
+
+## Next steps
 
 ### Thats it!
 

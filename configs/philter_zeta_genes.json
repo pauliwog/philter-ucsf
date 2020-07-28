@@ -2413,7 +2413,7 @@
         "title": "Gene symbols whitelist",
         "type": "set",
         "exclude": false,
-        "filepath": "filters/whitelists/whitelist_genes_and_patho_terms.json",
+        "filepath": "filters/whitelists/whitelist_genes_and_patho_terms_pruned.json",
         "pos": [],
         "notes": "These are words we beleive are safe"
     },

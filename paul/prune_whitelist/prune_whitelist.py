@@ -100,7 +100,7 @@ def get_names(files, locations):
 
 
 # go through each name and check whether it exists in the whitelist or not, if it does, remove it (option to ask user for confirmation on each value)
-def check_wl(names, wl_in, con): # con is confirmation
+def check_wl(names, wl_in, con, start_time): # con is confirmation
 
     time.sleep(1)
     print("Reading existing whitelist...")
@@ -127,7 +127,7 @@ def check_wl(names, wl_in, con): # con is confirmation
 
             # ask user to keep or remove
             if con: # if user wants confirmation for each value
-                notify("Script is ready!!", "remove_names.py needs confirmation.")
+                notify("Script is ready!!", "prune_whitelist.py needs confirmation.")
                 print("Value is %s" % (name))
                 ans = ""
                 while ans != "y" and ans != "n":
@@ -159,7 +159,8 @@ def check_wl(names, wl_in, con): # con is confirmation
                 print(name, kept_values[name])
 
         # get confirmation to remove all the chosen values to remove
-        notify("Script is ready!!", "remove_names.py needs confirmation.")
+        notify("Script is ready!!", "prune_whitelist.py needs confirmation.")
+        print("\nScript got here in %s seconds." % (str(time.time() - start_time)))
         ans = ""
         while ans != "y" and ans != "n":
             ans = input("\nDo you wish to continue and remove your chosen values? (y/n): ")
@@ -168,7 +169,7 @@ def check_wl(names, wl_in, con): # con is confirmation
             for name in removed_values:
                 del wl_dict[name]
 
-            new_wl = "remove_names_out/"+wl_in.split("/")[-1]
+            new_wl = "prune_whitelist_out/"+wl_in.split("/")[-1].split(".")[0]+"_pruned.json"
             with open(new_wl, "w") as fout:
                 json.dump(wl_dict, fout)
 
@@ -249,15 +250,15 @@ def main():
         exit()
 
     # set up output
-    shutil.rmtree("./remove_names_out/", ignore_errors=True)
-    os.mkdir("remove_names_out")
+    shutil.rmtree("./prune_whitelist_out/", ignore_errors=True)
+    os.mkdir("prune_whitelist_out")
 
     names, two_word_names = get_names(files, locations)
 
-    names_in_both = check_wl(names, whitelist, con)
+    names_in_both = check_wl(names, whitelist, con, start_time)
 
     if names_in_both is not None:
-        with open("remove_names_out/names_in_whitelist.txt", "w") as fout: # output the names in the whitelist
+        with open("prune_whitelist_out/names_in_whitelist.txt", "w") as fout: # output the names in the whitelist
             for key in names_in_both:
                 s = str(key)+"    "+str(names_in_both[key])+"\n"
                 fout.write(s)
