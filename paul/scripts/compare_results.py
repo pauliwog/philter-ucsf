@@ -21,9 +21,15 @@ def get_values(nested_dict):
         else: # if the value is not a nested dict, output
 
             with open("compare_results_out/eval_summary.txt", "a") as fout:
-
-                if "difference" in key and float(value) > 0: # add a plus sign in front of positive differences
-                    fout.write("\n%s : +%s" % (key, value))
+                if value == "NA":
+                    fout.write("\n%s : %s" % (key, value))
+                elif "difference" in key and float(value) > 0: # add a plus sign in front of positive differences
+                    if "percentage" in key: # if value is a percent
+                        fout.write("\n%s : +%s%%" % (key, value))
+                    else:
+                        fout.write("\n%s : +%s" % (key, value))
+                elif "percentage" in key: # if value is a percent
+                    fout.write("\n%s : %s%%" % (key, value))
                 else:
                     fout.write("\n%s : %s" % (key, value))
 
@@ -41,9 +47,13 @@ def compare_eval_summaries(dir1, dir2):
 
     for key in text1:
         summary[key] = {}
-        summary[key].update({"dir1":text1[key]})
-        summary[key].update({"dir2":text2[key]})
-        summary[key].update({"difference (dir2 - dir1)":float(text2[key])-float(text1[key])}) # compute difference between dir2 and dir1
+        summary[key].update({"dir1" : text1[key]})
+        summary[key].update({"dir2" : text2[key]})
+        summary[key].update({"difference (dir2 - dir1)" : float(text2[key])-float(text1[key])}) # compute difference between dir2 and dir1
+        if float(text2[key]) != 0 or float(text1[key]) != 0:
+            summary[key].update({"percentage difference ((dir2/dir1 - 1)*100)" : (float(text2[key])/float(text1[key])-1)*100})
+        else:
+            summary[key].update({"percentage difference ((dir2/dir1 - 1)*100)" : "NA"})
 
     get_values(summary) # output dict
 
@@ -206,6 +216,9 @@ def compare_log_phi_marked(dir1, dir2, indir):
         with open("compare_results_out/tags_in_only_2.txt", "a") as fout:
             fout.write(s)
 
+    with open("compare_results_out/phi_marked_summary.txt", "a") as fout:
+        fout.write("There were %d tags in dir1 and not dir2.\n" % (len(in_only_1)))
+        fout.write("There were %d tags in dir2 and not dir1.\n" % (len(in_only_2)))
 
 def main():
     help_str = """

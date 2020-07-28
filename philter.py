@@ -450,6 +450,9 @@ class Philter:
             self.patterns[i]["coordinate_map"] = CoordinateMap()
         for filename in self.filenames:
 
+            if __debug__:
+                print(filename)
+
             txt = self.texts[filename]
 
             # Get full self.include/exclude map before transform
