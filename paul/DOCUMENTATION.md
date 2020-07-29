@@ -7,23 +7,23 @@ I'm Paul, a rising junior in high school, and I worked remotely at the UCSF Baka
 
 <img align="right" width=40% src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41746-020-0258-y/MediaObjects/41746_2020_258_Fig1_HTML.png?as=webp">
 
-Philter follows a pipeline comprised of different methods which identify values as “safe” or “phi.” Those methods are pattern matching, blacklists, and whitelists. Philter is a rule based algorithm—so the order in which the "rules" are applied matters. The general pipeline order is (1) safe regexes, (2) PHI regexes, (3) blacklists, (4) whitelists, (5) the catch-all (not in the config file.) See the image below to the right as an example (image from [https://www.nature.com/articles/s41746-020-0258-y](https://www.nature.com/articles/s41746-020-0258-y)).
+Philter follows a pipeline comprised of different methods which identify values as “safe” or “phi.” Those methods are pattern matching, blacklists, and whitelists. Philter is a rule based algorithm—so the order in which the methods are applied matters. The general pipeline order is (1) safe regexes, (2) PHI regexes, (3) blacklists, (4) whitelists, (5) the catch-all (not in the config file.) See the image to the right as an example (image from [https://www.nature.com/articles/s41746-020-0258-y](https://www.nature.com/articles/s41746-020-0258-y)).
 
 Whitelists get used near the end of the pipeline, after Philter has identified the phi. The whitelists might contain values which are actually phi, so putting the whitelist at the end allows values to be identified as phi before they would have been incorrectly flagged as safe by the whitelist. What whitelists do is prevent the "catch-all" at the end of the pipeline (which obscures everything not marked as safe) from obscuring the safe values in the whitelist. Introducing gene symbols and pathology terms whitelists would theoretically prevent Philter from obscuring the gene symbols and pathology terms present in the clinical notes.
 
 However, upon closer examination and testing, I discovered that multiple regular expressions earlier in the pipeline tagged the gene symbols as names—which meant that the whitelist never had a chance to tag the symbols as safe. To fix this, I created a "safe" regex which I put into the pipeline ahead of the regexes which were obscuring gene symbols. This "safe" regex would get to the gene symbols ahead of the other regexes and mark them as safe. I used the same technique of creating a safe regex or whitelist to address the incorrect obscuring of some pathology terms.
 
-I also worked with David, my fellow summer intern, a little (it was his project) to create the correct xml annotations for the MIMIC notes. I only provided some advice and tested his results. The reason why I'm mentioning it is because having correct annotations is crucial to testing any sort of thing with Philter—they allow Philter to evaluate its performance. The annotations are in xml format, and contain for each phi in the note the phi type, the actual value, the start and stop indices of the value(s), and an ID. For example, Philter, reading this annotation file, can identify actual phi it obscured (true positives), which values it obscured but were actually safe (false positives), etc, and calculate metrics about its performance. I needed annotations for my test set of notes in order to determine how much the whitelists/safe regexes helped.
+I also worked with David, my fellow summer intern, a little (it was his project) to create the correct xml annotations for the MIMIC notes. I only provided some advice and tested his results. The reason why I'm mentioning it is because having correct annotations is crucial to testing any sort of thing with Philter—they allow Philter to evaluate its performance. The annotations are xml files, and for each phi in a clinical note they contain the (1) phi type, (2) actual value, (3) start and stop indices of the value(s), and (4) an ID. For example, Philter, reading an annotation file, can identify actual phi it obscured (true positives), which values it obscured but were actually safe (false positives), etc, and calculate metrics about its performance. I needed annotations for my test set of notes in order to determine how much the whitelists/safe regexes helped, or to tell if my modifications negatively impacted Philter.
 
 If some of my scripts are confusing, check out [details_on_scripts.md](https://github.com/pauliwog/philter-ucsf/blob/master/paul/details_on_scripts.md).
 
 Here is [my change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul/CHANGE_LOG.md) which should have everything I added or modified.
 
+And [the README](https://github.com/pauliwog/philter-ucsf/blob/master/paul/README.md) for the "paul" folder gives an overview of what all my files are.
+
 If you are curious and want to see what I did every day, you can check out [this google doc](https://docs.google.com/document/d/1R0CZyHlFhXny1KTAiDswyUyNCPmuKjYGK685wO2t_ug/edit?usp=sharing) with more of my planning and notes.
 
 If any questions arise about my documentation, code, or really anything, feel free to email me at burke.invent@gmail.com (not a link it's just blue for some reason).
-
-And if for some reason you have access to my documentation but not my git repo, email me and I'll add you as a collaborator!
 
 # What I did
 
@@ -31,27 +31,27 @@ And if for some reason you have access to my documentation but not my git repo, 
 **Setup**
 1. Got access to and downloaded data (MIMIC, i2b2).
 2. Downloaded and set up Philter-Beta.
-3. Got Philter-Zeta and set up a python virtual environment.
+3. Got Philter-Zeta and set up a virtual python environment.
 
 **Gene symbols project**
 1. Found, downloaded, extracted, and converted a list of gene symbols to create a whitelist.
-2. Made a list of the most common gene symbols, then searched for and copied MIMIC notes containing a common gene symbol to use as a test set of notes for evaluating the whitelist.
+2. Made a list of the most common gene symbols, then searched for and copied MIMIC notes containing a common gene symbol to use as a test set of notes.
 3. Ran these MIMIC notes through Philter (without the whitelist), compared before and after to find obscured gene symbols, then separated the notes with the obscured gene symbols.
     - If I ran Philter on a note and it obscured the gene symbol(s) in that note, then running Philter with the whitelist would hopefully rescue those symbols.
     - Whether Philter rescued the symbols or not would tell me how well the whitelist was working.
 4. Downloaded and set up newest version of Philter because the beta version was buggy when using xml annotations.
-5. Realized a big problem with the whitelist approach and created a safe regex to catch gene symbols before they got obscured.
+5. Realized the big problem with the whitelist approach and created a safe regex to catch gene symbols before they got obscured.
 6. Merged my code with new latest version of Philter, then ran MIMIC notes with annotations through Philter, with and without the whitelist and regexes and determined that the whitelist + safe regexes did work (after a couple modifications) and did not impact recall! I then sent my code off to get tested on UCSF data.
+7. Edited the safe regex and whitelist based on the testing results from UCSF data and tested again until everything was nice and peachy.
 
 **Pathology project**
 1. Tried to find and download data ([mtsamples](https://www.mtsamples.com/)), decided to use the MIMIC gene symbols test set instead.
 2. Created safe regexes or whitelists for staging terms, cassette (or slide) numbers, lymph nodes, and molecular markers.
 3. Tested on MIMIC notes. Even though the notes didn't have the pathology terms I was trying to rescue, I could use the MIMIC notes to refine my regexes and make sure they didn't catch non-pathology terms.
-4. Sent my code off to get tested on UCSF data.
-5. Edit/modify my safe regexes/whitelists, test on UCSF data, rinse and repeat.
+5. Edit my safe regexes and whitelists, keep testing (eventually on UCSF data), rinse and repeat.
 
-**Required libraries**
-1. ```argparse``` to provide run-time options so user doesn't have to change variables in the script.
+**Required libraries (all can be installed with pip or another package manager)**
+1. ```argparse``` to provide options so users don't have to change variables in the script.
 2. ```time``` to time how long scripts take to run.
 3. ```pandas``` for using dataframes for a bunch of things.
 4. ```os``` for interacting with files.
@@ -69,7 +69,7 @@ Obtained access to MIMIC and i2b2 data sets (I just followed the instructions on
 - [Link to i2b2](https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/#).
 
 ### 2
-I forked and set up a repo of the beta version of Philter on GitHub, [link](https://github.com/BCHSI/philter-ucsf) to Philter-Beta and [my repo](https://github.com/pauliwog/philter-ucsf) (not a fork of beta version, but a copy of the latest version of Philter containing the scripts I used). Then I set up Terminal on my Mac with Homebrew, python, etc—here's how I did it.
+I forked and set up a repo of the beta version of Philter on GitHub, [link](https://github.com/BCHSI/philter-ucsf) to Philter-Beta and [my repo](https://github.com/pauliwog/philter-ucsf) (my repo is not a fork of beta version, but a copy of the latest version of Philter containing the scripts I used). Then I set up my Mac with Homebrew, python, etc—here's how I did it.
 1. Install command line tools: ```xcode-select --install```.
 2. Install [Homebrew](https://brew.sh/): ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"```.
 3. Update path for Homebrew : ```export PATH="/usr/local/opt/python/libexec/bin:$PATH"```.
@@ -77,7 +77,7 @@ I forked and set up a repo of the beta version of Philter on GitHub, [link](http
 5. Done! All the necessary tools have been installed, and python 3 is ready to be used. The commands ```python -V``` or ```python3 -V``` will display python versions. Use ```pip3 install <packagename>``` to install packages for python 3 (eg. ```pip3 install numpy```).
 
 ### 3
-When I installed Philter-Zeta, it came with a virtual environment, but it didn't work properly for me—my local file paths differed. So I learned how to set up a virtual python environment (referencing [this handy article](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-macos)). Again, if you're following in my steps, here's how to set a virtual environment up.
+When I got Philter-Zeta, it came with a virtual environment, but it didn't work properly for me—my local file paths differed. So I learned how to set up a virtual python environment (referencing [this handy article](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-macos)). Again, if you're following in my steps, here's how to set a virtual environment up.
 1. ```cd ./the/proj/dir``` or ```mkdir ./the/proj/dir && cd ./the/proj/dir``` to get to the directory you want to create the virtual environment in.
 2. ```python3 -m venv python_env``` creates the virtual environment (python_env will be a new directory created in the current directory). This command also sets up the basic directories and files in the virtual environment.
 3. ```source python_env/bin/activate``` will activate the virtual environment. Now your command line prompt should look like this ```(python_env) computer-name:path/to/somewhere$```. To deactivate the virtual environment, just simply type ```deactivate```.
@@ -85,7 +85,7 @@ When I installed Philter-Zeta, it came with a virtual environment, but it didn't
 
 ## A closer look at the gene symbols project
 ### 1
-1. There's this really nice website, [genenames.org](https://www.genenames.org/) (called HGNC), which has an easy, customizable form for downloading gene data ([link to data form](https://biomart.genenames.org/martform/#!/default/HGNC?datasets=hgnc_gene_mart)). It takes the data from NCBI gene banks (or other places if you so choose). I downloaded all the gene symbols and names from NCBI to compile into a list, which included approved, alias, and previous symbols and names for each gene.
+1. There's this really nice website, [genenames.org](https://www.genenames.org/) (called HGNC), which has an easy, customizable form for downloading gene data ([link to form](https://biomart.genenames.org/martform/#!/default/HGNC?datasets=hgnc_gene_mart)). It takes the data from NCBI gene banks (or other places if you so choose). I downloaded all the gene symbols and names from NCBI to compile into a list, which included approved, alias, and previous symbols and names for each gene.
 2. Once that was downloaded, I created a script ([HGNC_symbols_to_json.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/gene_symbols/HGNC_symbols_to_json.py)) to extract the gene symbols from the HGNC download and create a json file containing each symbol, in the correct format for Philter to use as a whitelist. This script read the HGNC list and used regex to extract the gene symbols from it (the regex is tailored to the HGNC formatting, so it wouldn't work for a different download).
 3. Philter runs using a config file, which tells it what to do, and in what order. To get Philter to use the whitelist I created, I first duplicated the original config file and added a section at the bottom (more details in step 5) telling Philter to use the whitelist ([my test config file](https://github.com/pauliwog/philter-ucsf/blob/master/configs/philter_zeta_genes.json)). I chose to create a separate test config file because it is easy to switch between config files when running Philter (the ``` -f ./path/to/configs.json``` option).
 
