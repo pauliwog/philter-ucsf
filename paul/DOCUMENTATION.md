@@ -59,6 +59,7 @@ If any questions arise about my documentation, code, or really anything, feel fr
 
 
 ## A closer look at the setup
+
 ### Part 1
 Obtained access to MIMIC and i2b2 data sets (I just followed the instructions on the site pages).
 - [Link to MIMIC](https://mimic.physionet.org/gettingstarted/access/).
@@ -78,67 +79,13 @@ When I got Philter-Zeta, it came with a virtual environment, but it didn't work 
 2. ```python3 -m venv python_env``` creates the virtual environment (python_env will be a new directory created in the current directory). This command also sets up the basic directories and files in the virtual environment.
 3. ```source python_env/bin/activate``` will activate the virtual environment. Now your command line prompt should look like this ```(python_env) computer-name:path/to/somewhere$```. To deactivate the virtual environment, just simply type ```deactivate```.
 
-
 ## A closer look at the gene symbols project
-### Part 1
-1. There's this really nice website, [genenames.org](https://www.genenames.org/) (called HGNC), which has an easy, customizable form for downloading gene data ([link to form](https://biomart.genenames.org/martform/#!/default/HGNC?datasets=hgnc_gene_mart)). It takes the data from NCBI gene banks (or other places if you so choose). I downloaded all the gene symbols and names from NCBI, which included approved, alias, and previous symbols/names for each gene.
 
-<table class="tg", style="float:right">
-<caption>Example gene data from HGNC</caption>
-<thead>
-  <tr>
-    <th class="tg-0pky">HGNC ID</th>
-    <th class="tg-0pky">Status</th>
-    <th class="tg-0pky">Approved symbol</th>
-    <th class="tg-0pky">Previous symbol</th>
-    <th class="tg-0pky">Alias symbol</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0pky">HGNC:5</td>
-    <td class="tg-0pky">Approved</td>
-    <td class="tg-0pky">A1BG</td>
-    <td class="tg-0pky">no data</td>
-    <td class="tg-0pky">no data</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">HGNC:37133</td>
-    <td class="tg-0pky">Approved</td>
-    <td class="tg-0pky">A1BG-AS1</td>
-    <td class="tg-0pky">NCRNA00181</td>
-    <td class="tg-0pky">FLJ23569</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">HGNC:37133</td>
-    <td class="tg-0pky">Approved</td>
-    <td class="tg-0pky">A1BG-AS1</td>
-    <td class="tg-0pky">A1BGAS</td>
-    <td class="tg-0pky">FLJ23569</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">HGNC:37133</td>
-    <td class="tg-0pky">Approved</td>
-    <td class="tg-0pky">A1BG-AS1</td>
-    <td class="tg-0pky">A1BG-AS</td>
-    <td class="tg-0pky">FLJ23569</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">HGNC:24086</td>
-    <td class="tg-0pky">Approved</td>
-    <td class="tg-0pky">A1CF</td>
-    <td class="tg-0pky">no data</td>
-    <td class="tg-0pky">ACF</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">HGNC:24086</td>
-    <td class="tg-0pky">Approved</td>
-    <td class="tg-0pky">A1CF</td>
-    <td class="tg-0pky">no data</td>
-    <td class="tg-0pky">ASP</td>
-  </tr>
-</tbody>
-</table>
+### Part 1
+
+<img align="right" width=60% src="https://i.pinimg.com/originals/47/1b/d4/471bd4e085c6e09ef892a809afff8ba1.png">
+
+1. There's this really nice website, [genenames.org](https://www.genenames.org/) (called HGNC), which has an easy, customizable form for downloading gene data ([link to form](https://biomart.genenames.org/martform/#!/default/HGNC?datasets=hgnc_gene_mart)). It takes the data from NCBI gene banks (or other places if you so choose). I downloaded all the gene symbols and names from NCBI, which included approved, alias, and previous symbols/names for each gene (see example on right).
 
 2. Once that was downloaded, I created a script ([HGNC_symbols_to_json.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/gene_symbols/HGNC_symbols_to_json.py)) to extract the gene symbols from the HGNC download and create a json file containing each symbol, in the correct format for Philter to use as a whitelist. This script read the HGNC list and used regex to extract the gene symbols from it.
 3. Philter runs using a config file, which tells it what to do, and in what order. To get Philter to use the whitelist I created, I first duplicated the original config file and added a section at the bottom (more details in part 5) telling Philter to use the whitelist ([my test config file](https://github.com/pauliwog/philter-ucsf/blob/master/configs/philter_zeta_genes.json)). I chose to create a separate config file for testing because it is easy to switch between config files when running Philter (the ``` -f path/to/config/file.json``` option).
@@ -159,7 +106,7 @@ When I got Philter-Zeta, it came with a virtual environment, but it didn't work 
 ```bash
    python3 main.py -i path/to/input/dir/ -a path/to/xml(the annotations)/dir/ -o path/to/output/dir/ -f path/to/config/file.json -c path/to/coords/file.json -e False > path/to/output/file.txt
 ```
-4. Next, I compared the before and after notes (before and after Philter annotations) to find the notes containing gene symbols obscured by Philter. These notes would become the test set for the whitelist. I originally designed my script which identified these obscured gene symbols to use another grep search, so sorry if you are duplicating my process—you're going to need to do another grep :disappointed: (or you could write your own script).
+4. Next, I compared the before and after notes (before and after Philter annotations) to find the notes containing gene symbols obscured by Philter. These notes would become the test set for the whitelist. I originally designed my script which identified these obscured gene symbols to use another grep search, so sorry if you are duplicating my process—you're going to need to do another grep (or you could write your own script).
 ```bash
    grep -n -r -w -f common_symbols.txt dir/with/original/notes/ > path/to/another/output/file.txt
 ```
@@ -173,7 +120,7 @@ After trying for a while with Lakshmi's help to get Philter-Beta to accept the x
 
 As described at the very top, the gene symbols whitelist had been inserted into the config file near the very end. However, when I ran Philter with the whitelist on my new test set, nothing changed. After some fiddling, Lakshmi told me to move the whitelist to the top of the config file and try again. This time, the gene symbols were not obscured! But...putting the whitelist at the beginning of the pipeline was dangerous, because the whitelist could catch real phi values and mark them as safe (false negatives) before the real phi could be caught by regular expressions later in the pipeline. For example, if somebody was named Ace, then their name would be marked as safe because it was in the whitelist (if the note was in all caps). So we definitely didn't want to put the whitelist at the front of the pipeline. It seemed like we had two other options, to edit the phi regexes catching the gene symbols, or to create a "safe" regex to tag gene symbols as safe.
 
-The next logical step was to take a closer look at the regexes which were catching the symbols. To do so, I enabled the verbose option in Philter (```-v```) and added a print statement in philter.py so I could see the each regex and everything it caught. And when I subsequently ran Philter on several test notes, I found that multiple different regexes were catching the gene symbols :cry:. That meant to fix the problem I would have to edit multiple regexes. On top of that, some of them looked quite complicated.
+The next logical step was to take a closer look at the regexes which were catching the symbols. To do so, I enabled the verbose option in Philter (```-v```) and added a print statement in philter.py so I could see the each regex and everything it caught. And when I subsequently ran Philter on several test notes, I found that multiple different regexes were catching the gene symbols. That meant to fix the problem I would have to edit multiple regexes. On top of that, some of them looked quite complicated.
 
 So instead, I decided to create a safe regex, one that would catch the gene symbols and tag them as safe. To do so, I ran a grep search (another one) on the test notes so I could look at all the instances of gene symbols and find patterns which could be used to identify a symbol. Using those patterns, I created a regular expression to catch the gene symbols and mark them as safe. However, the regex which I was using to represent a gene symbol, ```[A-Z][A-Z0-9\-]+```, could also catch non-gene symbols, so to fix this problem I modified a piece of code a previous intern had written which would take regex containing a "variable" and replace that variable with a long list of something. In my case this was a list of gene symbols—much easier than editing a regular expression with 2000 lines of symbols! Here's the [transform_gene_symbols.py](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/transform_gene_symbols.py) code, and the [regex with the variable](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/gene_symbols/gene_symbols_safe_04.txt) and [without](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/gene_symbols/gene_symbols_safe_04_transformed.txt).
 
@@ -184,6 +131,7 @@ I then tested my regex and whitelist on the MIMIC test set with annotations, tig
 
 
 ## A closer look at the pathology terms project
+
 ### Part 1
 Unfortunately, the MIMIC and i2b2 data sets didn't have any (or only very few) notes which contained the pathology terms which I would be attempting to recover. So, I went looking for more notes which had the pathology terms. Lakshmi had provided me with a website, [mtsamples.com](https://www.mtsamples.com/), but it only had eight pathology notes. I did some more searching and I didn't find anything better, which meant that once I was ready to test, the pathology regexes would have to be tested by Lakshmi on the UCSF notes. However, I could use the MIMIC test set I already had to refine my regexes before I tested on UCSF data.
 
@@ -193,7 +141,7 @@ When I first started looking at the pathology terms, Lakshmi provided me with a 
 2. **Staging terms.** [Link](https://github.com/pauliwog/philter-ucsf/blob/master/filters/whitelists/whitelist_staging_terms.json) to whitelist. The provided regex wasn't bad—staging terms follow a pattern of characters, so it wasn't hard to create a regex to match them. But the complete list of staging terms was only 100 terms long, so I decided to create a whitelist to be sure that I was only matching staging terms. And because the staging terms were super unique (eg. pT4aN1aM1), this whitelist could go near the beginning of the pipeline without fear of mistakenly tagging a real phi as safe.
 3. **Lymph nodes.** [Link](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/pathology/lymph_nodes_safe.txt) to safe regex. Lymph nodes were pretty simple. Only having one example, I used my imagination to try to account for all the possibilities of these numbers, and created a safe regex which checked for a variation of the words "lymph nodes" before the match. As is obvious in the example below, the "(11/16)" following "lymph nodes" looks a lot like a date, which is why Philter was obscuring it. In fact, this particular example could actually be November 16th!
 ```
-...in eleven of sixteen lymph nodes (11/16)...
+Metastatic  adenocarcinoma in eleven of sixteen lymph nodes (11/16) and four satellite tumor nodules; see comment.
 ```
 4. **Molecular markers.** [Link](https://github.com/pauliwog/philter-ucsf/blob/master/filters/regex/pathology/molecular_markers_safe_transformed.txt) to safe regex. I was provided with two examples, one containing the protein "Ki-67", and the other the gene symbols "MLH1, MSH2, MSH6, and PMS2". When I tried to find a list of molecular markers, I generally got lists of proteins, which often included gene symbols or molecular markers in the descriptions. The whole thing was rather confusing—there wasn't really a good definition of what a "molecular marker" was, and I was lacking examples to create a good pattern based safe regex. So, in consultation with Lakshmi, I decided to reuse the gene symbols safe regex, although checking for different words surrounding the match. I based this regex off  the two examples I had. I used the same "replacing a variable with a list" technique as well.
     - [Human Protein Reference Database](http://www.hprd.org/).
