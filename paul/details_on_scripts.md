@@ -8,16 +8,17 @@
 ---
 #### ```compare_results.py```
 This script compares two Philter runs by reading output files in the "eval" and "log" directories and extracting lines from the input text files for Philter to get the context for each match. There are options to compare ```eval/summary.json```, ```eval/*.eval``` (eg. ```tp.eval```, ```fp.eval```), and ```log/phi_marked.json``` files.
-- ```-i```: the directory containing the text files which was input to Philter
-- ```-d1```: the first directory which will be compared (typically the "control", or the dir which is being tested against)
-- ```-d2```: the second directory which will be compared (typically the "testing" directory, or the dir to compare against the control)
-- ```-o```: the options of what to compare—input can be any combination of the choices listed below
- - ```-o summary``` will compare the ```eval/summary.json``` files
- - ```-o phi_marked``` will compare the ```log/phi_marked.json``` files
- - ```-o tp``` will compare the ```eval/tp.eval``` files
- - ```-o fp``` will compare the ```eval/fp.eval``` files
- - ```-o tn``` will compare the ```eval/tn.eval``` files
- - ```-o fn``` will compare the ```eval/fn.eval``` files
+- ```-i```: the path to the directory containing the text files which was input to Philter
+- ```-d1```: the path to the first directory which will be compared (typically the "control", or the dir which is being tested against)
+- ```-d2```: the path to the second directory which will be compared (typically the "testing" directory, or the dir to compare against the control)
+- ```-o```: the path to a dir where this script will output to
+- ```-ops```: the options of what to compare—input can be any combination of the choices listed below
+ - ```-ops summary``` will compare the ```eval/summary.json``` files
+ - ```-ops phi_marked``` will compare the ```log/phi_marked.json``` files
+ - ```-ops tp``` will compare the ```eval/tp.eval``` files
+ - ```-ops fp``` will compare the ```eval/fp.eval``` files
+ - ```-ops tn``` will compare the ```eval/tn.eval``` files
+ - ```-ops fn``` will compare the ```eval/fn.eval``` files
 ```bash
     python3 compare_results.py -i path/to/clinical/notes/input/to/philter/ -d1 path/to/first/run/output/dir/ -d2 path/to/second/run/output/dir/ -o summary phi_marked tp fp tn fn
 ```

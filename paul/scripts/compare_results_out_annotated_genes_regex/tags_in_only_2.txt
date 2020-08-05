@@ -1,0 +1,6 @@
+
+
+Word: 'Beta'
+Filepath: './data/MIMIC/philter_files/without_tags/DFA21BE434FA5A.txt'
+Tag [start, stop, word, phi-type]: '{'start': 5768, 'end': 5772, 'word': 'Beta', 'type': 'NAME'}'
+Match in context: 'Need for rehab screen\n Cardiovascular: Aspirin, Beta-blocker, Statins, HD stable. NSR. Cont to\n opti'

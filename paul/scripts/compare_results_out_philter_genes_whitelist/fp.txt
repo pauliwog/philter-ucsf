@@ -1,0 +1,94 @@
+False positives in dir1 and not dir2:
+
+filepath:	'./data/i2b2/i2b2_notes/106-04.txt'
+phi_type:	'None'
+match:	'OGT'
+start:	'3661'
+stop:	'3663'
+match in context:	'=12 SaO2=92-100% on FiO2 0.5\nGeneral: elderly Caucasian woman, intubated, sedated \nHEENT: PERRL, OGT in place with dark output on low vacuum to wall suction\nNeck: Supple, full ROM, no LAD , no cen'
+
+
+filepath:	'./data/i2b2/i2b2_notes/247-03.txt'
+phi_type:	'None'
+match:	'K3'
+start:	'5234'
+stop:	'5235'
+match in context:	'Ref. Range Units\nWBC 13.4 H (4.0-11.0) K3/UL\nRBC 4.83 (4.5-5.9) K6/UL\nHGB'
+
+
+filepath:	'./data/i2b2/i2b2_notes/247-03.txt'
+phi_type:	'None'
+match:	'K3'
+start:	'6514'
+stop:	'6515'
+match in context:	'(0-3) %\nABSOLUTE NEUTROPHILS 11.7 H (1.8-7.7) K3/UL\nABSOLUTE LYMPHOCYTES 0.9 L (1.0-4.8) K3/UL\nRBC PARAMETERS'
+
+
+filepath:	'./data/i2b2/i2b2_notes/247-03.txt'
+phi_type:	'None'
+match:	'K3'
+start:	'6594'
+stop:	'6595'
+match in context:	'(1.8-7.7) K3/UL\nABSOLUTE LYMPHOCYTES 0.9 L (1.0-4.8) K3/UL\nRBC PARAMETERS NORMAL\n\nMicrobiology: None\n\nRadiology: None\n\nCardiogram:\n3/31/'
+
+
+filepath:	'./data/i2b2/i2b2_notes/324-05.txt'
+phi_type:	'None'
+match:	'G6PD'
+start:	'1705'
+stop:	'1708'
+match in context:	'percholesterolemia\n12. s/p left 5th toe amputation\n13. h/o C. dif colitis\n14. s/p ccy and appy\n15. G6PD deficiency\n\nMedications:\nNeoral 100mg bid po\nPrednisone 5/10mg qd po\nLopressor 50mg bid po\nLasix 8'
+
+
+filepath:	'./data/i2b2/i2b2_notes/350-02.txt'
+phi_type:	'None'
+match:	'G6PD'
+start:	'1903'
+stop:	'1906'
+match in context:	'mall L A2 aneurysm. \n\n\nMrs. Doss continues to take Plavix for secondary stroke prevention (she has G6PD deficiency). Her dentist would like to take her off this medication for a week before an extensiv'
+
+
+filepath:	'./data/i2b2/i2b2_notes/350-04.txt'
+phi_type:	'None'
+match:	'G6PD'
+start:	'555'
+stop:	'558'
+match in context:	'Ruath Doss is a 60yo RHF with a history of poorly controlled DM, htn, hypercholesterolemia, and G6PD deficiency who is followed here in Neurology clinic for multiple small L frontoparietal strokes co'
+
+
+filepath:	'./data/i2b2/i2b2_notes/350-04.txt'
+phi_type:	'None'
+match:	'G6PD'
+start:	'1913'
+stop:	'1916'
+match in context:	'ns:\n\natenolol 50mg qday\n\nhctz 12.5mg qday\n\nLipitor 80mg qday\n\nclopidogrel 75mg qday (not on asa 2/2 G6PD deficiency)\n\ncitalopram 40mg qday\n\nglipizide 5mg qday\n\nCozaar 100mg qday\n\nMetformin 500mg bid\n\nDil'
+
+
+filepath:	'./data/i2b2/i2b2_notes/364-04.txt'
+phi_type:	'None'
+match:	'P63'
+start:	'5199'
+stop:	'5201'
+match in context:	'BNP1625H\n\n\n\n\n\n\n\n\n\n\n11/22/24\n\n\n\n\n\n5.3\n\n\n\\n\n\n11.1L\n\n\n/\n\n\n237\n\n\n\n/\n\n\n35.4L\n\n\n\\n\n\n\n\n\n \n\n\nP63\n\n\nL22\n\n\nE5\n\n\nBs0\n\n\n\nUSG1.010\n\n\nUAlbneg\n\n\nUBldneg\n\n\nULeukneg\n\n\nUNitneg\n\n\n\nUpH6.0\n\n\nUKetneg'
+
+
+filepath:	'./data/i2b2/i2b2_notes/364-04.txt'
+phi_type:	'None'
+match:	'L22'
+start:	'5205'
+stop:	'5207'
+match in context:	'BNP1625H\n\n\n\n\n\n\n\n\n\n\n11/22/24\n\n\n\n\n\n5.3\n\n\n\\n\n\n11.1L\n\n\n/\n\n\n237\n\n\n\n/\n\n\n35.4L\n\n\n\\n\n\n\n\n\n \n\n\nP63\n\n\nL22\n\n\nE5\n\n\nBs0\n\n\n\nUSG1.010\n\n\nUAlbneg\n\n\nUBldneg\n\n\nULeukneg\n\n\nUNitneg\n\n\n\nUpH6.0\n\n\nUKetneg'
+
+
+filepath:	'./data/i2b2/i2b2_notes/364-04.txt'
+phi_type:	'None'
+match:	'E5'
+start:	'5211'
+stop:	'5212'
+match in context:	'BNP1625H\n\n\n\n\n\n\n\n\n\n\n11/22/24\n\n\n\n\n\n5.3\n\n\n\\n\n\n11.1L\n\n\n/\n\n\n237\n\n\n\n/\n\n\n35.4L\n\n\n\\n\n\n\n\n\n \n\n\nP63\n\n\nL22\n\n\nE5\n\n\nBs0\n\n\n\nUSG1.010\n\n\nUAlbneg\n\n\nUBldneg\n\n\nULeukneg\n\n\nUNitneg\n\n\n\nUpH6.0\n\n\nUKetneg'
+
+
+
+False positives in dir2 and not dir1:
+
+No differences exist.

@@ -1,0 +1,6 @@
+
+
+Word: 'Ambrose'
+Filepath: './data/i2b2/i2b2_notes/396-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 1707, 'end': 1714, 'word': 'Ambrose', 'type': 'NAME'}'
+Match in context: 'nic and has just returned home. Her son, Brendon Ambrose who was the healthcare proxy, is here with her to'

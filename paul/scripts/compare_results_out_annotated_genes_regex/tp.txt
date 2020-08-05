@@ -1,0 +1,22 @@
+True positives in dir1 and not dir2:
+
+filepath:	'./data/MIMIC/philter_files/without_tags/DB81271480DC76.txt'
+phi_type:	'DATE'
+match:	'10'
+start:	'7642'
+stop:	'7643'
+match in context:	'e:\n78 year old male with h/o hypertension, DM on insulin, CKD IV,\nchronic dCHF who presented to OSH 10-22 with one day of fevers,\nCT scan concerning for pneumobilia so transfered to 807 11th Avenue, Su'
+
+
+filepath:	'./data/MIMIC/philter_files/without_tags/DB81271480DC76.txt'
+phi_type:	'DATE'
+match:	'22'
+start:	'7645'
+stop:	'7646'
+match in context:	'78 year old male with h/o hypertension, DM on insulin, CKD IV,\nchronic dCHF who presented to OSH 10-22 with one day of fevers,\nCT scan concerning for pneumobilia so transfered to 807 11th Avenue, Sunny'
+
+
+
+True positives in dir2 and not dir1:
+
+No differences exist.

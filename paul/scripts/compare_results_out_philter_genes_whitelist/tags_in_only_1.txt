@@ -1,0 +1,1 @@
+There are no tags in dir1 and not dir2.

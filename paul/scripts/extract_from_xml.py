@@ -7,7 +7,7 @@ from lxml import etree
 def get_text(inputfile, tag):
     doc = etree.parse(inputfile) # parse xml file
     out_text = doc.find(tag) # look for tag
-    return(out_text.text) # return stuff in between tags
+    return(out_text.text.strip()) # return stuff in between tags
 
 
 def main():

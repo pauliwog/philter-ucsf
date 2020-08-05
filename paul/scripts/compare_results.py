@@ -8,19 +8,19 @@ import pandas as pd
 from pandas.io.json import json_normalize
 
 # output items in nested dict
-def get_values(nested_dict):
+def get_values(nested_dict, outdir):
     for key, value in nested_dict.items(): # got through dict
 
         if type(value) is dict: # if value is another nested dict
 
-            with open("compare_results_out/eval_summary.txt", "a") as fout:
+            with open(os.path.join(outdir, "eval_summary.txt"), "a") as fout:
                 fout.write("\n\n%s" % (key))
 
-            get_values(value) # until we reach the end of nested dicts
+            get_values(value, outdir) # until we reach the end of nested dicts
 
         else: # if the value is not a nested dict, output
 
-            with open("compare_results_out/eval_summary.txt", "a") as fout:
+            with open(os.path.join(outdir, "eval_summary.txt"), "a") as fout:
                 if value == "NA":
                     fout.write("\n%s : %s" % (key, value))
                 elif "difference" in key and float(value) > 0: # add a plus sign in front of positive differences
@@ -35,7 +35,7 @@ def get_values(nested_dict):
 
 
 # compare the two summary.json eval files
-def compare_eval_summaries(dir1, dir2):
+def compare_eval_summaries(dir1, dir2, outdir):
 
     time.sleep(1)
     print("Comparing eval/summary.json files...")
@@ -55,11 +55,11 @@ def compare_eval_summaries(dir1, dir2):
         else:
             summary[key].update({"percentage difference ((dir2/dir1 - 1)*100)" : "NA"})
 
-    get_values(summary) # output dict
+    get_values(summary, outdir) # output dict
 
 
 # compare the tp, tn, fp, fn .eval files
-def compare_eval_files(indir, dir1, dir2, options):
+def compare_eval_files(indir, dir1, dir2, options, outdir):
 
     # set up lists to go through
     print_statements = []
@@ -108,7 +108,7 @@ def compare_eval_files(indir, dir1, dir2, options):
 
         exist = False # if there are no values in only one of the two dirs
 
-        with open(os.path.join("compare_results_out/", file_names[i]), "a") as fout:
+        with open(os.path.join(outdir, file_names[i]), "a") as fout:
             if i % 2 == 0:
                 fout.write(print_statements[i].lstrip()) # get rid of extra newlines at the beginning of the text file
             else:
@@ -135,23 +135,23 @@ def compare_eval_files(indir, dir1, dir2, options):
                 filename = re.findall('[\S]+\/([\S]+?\.txt)', line_data["filepath"])[0]
 
                 # get the "match in context" from the original txt file passed through Philter
-                line_data["match in context"] = open(os.path.join(indir, filename)).read()[int(line_data["start"])-50 : int(line_data["stop"])+50].strip().replace("\n", "\\n")
+                line_data["match in context"] = open(os.path.join(indir, filename)).read()[int(line_data["start"])-100 : int(line_data["stop"])+100].strip().replace("\n", "\\n")
                 line_data["match in context"] = " ".join(line_data["match in context"].split()) # replace all whitespace with a single space
 
                 # output
-                with open(os.path.join("compare_results_out/", file_names[i]), "a") as fout:
+                with open(os.path.join(outdir, file_names[i]), "a") as fout:
                     fout.write("\n\n")
                     for key in line_data:
-                        fout.write("%s: '%s', " % (key, line_data[key]))
+                        fout.write("%s:\t'%s'\n" % (key, line_data[key]))
 
         # if no differences exist
         if not exist:
-            with open(os.path.join("compare_results_out/", file_names[i]), "a") as fout:
+            with open(os.path.join(outdir, file_names[i]), "a") as fout:
                 fout.write("\n\nNo differences exist.")
 
 
 # compare the log/phi_marked.json files
-def compare_log_phi_marked(dir1, dir2, indir):
+def compare_log_phi_marked(dir1, dir2, indir, outdir):
 
     time.sleep(1)
     print("Comparing log/phi_marked.json files...")
@@ -191,32 +191,30 @@ def compare_log_phi_marked(dir1, dir2, indir):
 
     if bool(in_only_1): # if there are tags in dir1 and not dir2
 
-        with open("compare_results_out/tags_in_only_1.txt", "a") as fout:
+        with open(os.path.join(outdir, "tags_in_only_1.txt"), "a") as fout:
             for item in in_only_1:
                 fout.write("\n\nWord: '%s'\nFilepath: '%s'\nTag [start, stop, word, phi-type]: '%s'\nMatch in context: '%s'" % (item[0], item[1], item[2], item[3]))
 
     else: # if there are no tags in dir1 and not dir2
 
         s = "There are no tags in dir1 and not dir2."
-        print(s)
-        with open("compare_results_out/tags_in_only_1.txt", "a") as fout:
+        with open(os.path.join(outdir, "tags_in_only_1.txt"), "a") as fout:
             fout.write(s)
 
 
     if bool(in_only_2): # if there are tags in dir1 and not dir2
 
-        with open("compare_results_out/tags_in_only_2.txt", "a") as fout:
+        with open(os.path.join(outdir, "tags_in_only_2.txt"), "a") as fout:
             for item in in_only_2:
                 fout.write("\n\nWord: '%s'\nFilepath: '%s'\nTag [start, stop, word, phi-type]: '%s'\nMatch in context: '%s'" % (item[0], item[1], item[2], item[3]))
 
     else: # if there are no tags in dir1 and not dir2
 
         s = "There are no tags in dir2 and not dir1."
-        print(s)
-        with open("compare_results_out/tags_in_only_2.txt", "a") as fout:
+        with open(os.path.join(outdir, "tags_in_only_2.txt"), "a") as fout:
             fout.write(s)
 
-    with open("compare_results_out/phi_marked_summary.txt", "a") as fout:
+    with open(os.path.join(outdir, "phi_marked_summary.txt"), "a") as fout:
         fout.write("There were %d tags in dir1 and not dir2.\n" % (len(in_only_1)))
         fout.write("There were %d tags in dir2 and not dir1.\n" % (len(in_only_2)))
 
@@ -253,7 +251,10 @@ def main():
                             compared. Generally this dir should be the test
                             dir.""",
                     type=str)
-    ap.add_argument("-o", "--options",
+    ap.add_argument("-o", "--outputdir",
+                    help="",
+                    type=str)
+    ap.add_argument("-ops", "--options",
                     help="""Which files will be compared. The options are
                             'summary', 'phi_marked', 'fp', 'tp', 'fn', or 'tn',
                             or any combination of them. For example, if 'fp'
@@ -268,22 +269,24 @@ def main():
     indir = args.input_directory
     dir1 = args.directory_one
     dir2 = args.directory_two
+    outputdir = args.outputdir
     options = args.options
+    outdir = os.path.join(outputdir, "compare_results_out_"+dir2.split("/")[-2])
 
     if options is None:
         print("Please enter options.")
         exit()
 
-    shutil.rmtree('./compare_results_out/', ignore_errors=True)
-    os.mkdir('compare_results_out')
+    shutil.rmtree(outdir, ignore_errors=True)
+    os.mkdir(outdir)
 
     if "summary" in options:
-        compare_eval_summaries(dir1, dir2)
+        compare_eval_summaries(dir1, dir2, outdir)
 
-    compare_eval_files(indir, dir1, dir2, options)
+    compare_eval_files(indir, dir1, dir2, options, outdir)
 
     if "phi_marked" in options:
-        compare_log_phi_marked(dir1, dir2, indir)
+        compare_log_phi_marked(dir1, dir2, indir, outdir)
 
 
 main()

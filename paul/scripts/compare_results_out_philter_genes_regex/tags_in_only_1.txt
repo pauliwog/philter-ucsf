@@ -1,0 +1,161 @@
+
+
+Word: '54 yo for CPE'
+Filepath: './data/i2b2/i2b2_notes/157-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 28, 'end': 41, 'word': '54 yo for CPE', 'type': 'LOCATION'}'
+Match in context: ''
+
+Word: 'HA'
+Filepath: './data/i2b2/i2b2_notes/120-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 441, 'end': 443, 'word': 'HA', 'type': 'NAME'}'
+Match in context: 'for c/o\n"it felt like my BP was high". Pt had sl HA, but o/w denies confusion,\nlethargy, CP, SOB, vis'
+
+Word: 'SMA7'
+Filepath: './data/i2b2/i2b2_notes/120-05.txt'
+Tag [start, stop, word, phi-type]: '{'start': 7285, 'end': 7289, 'word': 'SMA7', 'type': 'ID'}'
+Match in context: 'rmed and await labs as above, including UA, CBC, SMA7, LFTs, EKG, and Coags ( see labs above for result'
+
+Word: 'URI'
+Filepath: './data/i2b2/i2b2_notes/128-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 736, 'end': 739, 'word': 'URI', 'type': 'NAME'}'
+Match in context: 'he had no other symptoms including CP, dizziness, URI symptoms, fever, chills, GI symptoms. No PND, ort'
+
+Word: 'BB'
+Filepath: './data/i2b2/i2b2_notes/142-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 3059, 'end': 3061, 'word': 'BB', 'type': 'NAME'}'
+Match in context: 'LAD times two and RAMUS. \n\n-ASA and plavix\n-cont BB, hr and BP well controlled\n-will add statin, chec'
+
+Word: 'LENIS'
+Filepath: './data/i2b2/i2b2_notes/145-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 9341, 'end': 9346, 'word': 'LENIS', 'type': 'NAME'}'
+Match in context: '2. rhythm\n\nNSR\n\nOn bblocker\n\n\n\n3. ? DVT/PE\n\ncheck LENIS\n\ncont heparin\n\n\n\n4. leukocytosis\n\ncx if spikes\n\nf'
+
+Word: 'MAC'
+Filepath: './data/i2b2/i2b2_notes/145-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 9414, 'end': 9417, 'word': 'MAC', 'type': 'NAME'}'
+Match in context: '4. leukocytosis\n\ncx if spikes\n\nf/u urine cx\n\n\n\n5. MAC\n\ncont dicloxacillin\n\n\n\n6. DM\n\nRISS\n\nDiabetic diet'
+
+Word: 'Blocker'
+Filepath: './data/i2b2/i2b2_notes/152-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2096, 'end': 2103, 'word': 'Blocker', 'type': 'NAME'}'
+Match in context: 'r h/o CHF\n\n\n\nRhythm -- Had some NSVT, increase B-Blocker, monitor lytes\n\n\n\n \n\nFEN- Nexium, heparin SC'
+
+Word: 'ARB'
+Filepath: './data/i2b2/i2b2_notes/152-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 3857, 'end': 3860, 'word': 'ARB', 'type': 'NAME'}'
+Match in context: 'ent volume depletion. Continue high dose statin, ARB, and low dose CCB for BP control.\n\nIf UGIB contin'
+
+Word: '1/15'
+Filepath: './data/i2b2/i2b2_notes/154-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2460, 'end': 2464, 'word': '1/15', 'type': 'DATE'}'
+Match in context: 'O2, two liters via nasal cannula, \nnitroglycerin 1/150 sublingual times three, Lopressor 25 mg p.o., \na'
+
+Word: 'him end'
+Filepath: './data/i2b2/i2b2_notes/155-05.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2537, 'end': 2544, 'word': 'him end', 'type': 'NAME'}'
+Match in context: 'Dr. Nesbitt and has a follow-up appointment with him end of January, also has follow-up appointment with c'
+
+Word: 'TAH'
+Filepath: './data/i2b2/i2b2_notes/156-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 460, 'end': 463, 'word': 'TAH', 'type': 'NAME'}'
+Match in context: 'ted \nby diabetic retinopathy. She also has had a TAH and is on Premarin \nreplacement. She has had onl'
+
+Word: 'MRI and CT'
+Filepath: './data/i2b2/i2b2_notes/179-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 3162, 'end': 3172, 'word': 'MRI and CT', 'type': 'LOCATION'}'
+Match in context: 'pale.\n\n\n\nRenal carcinoma\n\nThe patient had repeat MRI and CT in January at the Healthwin Hospital. These were'
+
+Word: 'July 17'
+Filepath: './data/i2b2/i2b2_notes/180-01.txt'
+Tag [start, stop, word, phi-type]: '{'start': 758, 'end': 765, 'word': 'July 17', 'type': 'DATE'}'
+Match in context: 'ephrox 150 mg tid, insulin\nNPH 10 units qam.\n \nOn July 17, after hemodialysis, Ms. Tinsley was given a part'
+
+Word: 'July'
+Filepath: './data/i2b2/i2b2_notes/180-01.txt'
+Tag [start, stop, word, phi-type]: '{'start': 758, 'end': 762, 'word': 'July', 'type': 'NAME'}'
+Match in context: 'ephrox 150 mg tid, insulin\nNPH 10 units qam.\n \nOn July 17, after hemodialysis, Ms. Tinsley was given a p'
+
+Word: 'BB'
+Filepath: './data/i2b2/i2b2_notes/185-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 5790, 'end': 5792, 'word': 'BB', 'type': 'NAME'}'
+Match in context: 'e.\n\nContinue ACE, BUN and Creatine WNL.\n\nContinue BB, HR and BP well controlled.\n\nWill cycle cardiac e'
+
+Word: 'RISS'
+Filepath: './data/i2b2/i2b2_notes/221-05.txt'
+Tag [start, stop, word, phi-type]: '{'start': 3238, 'end': 3242, 'word': 'RISS', 'type': 'NAME'}'
+Match in context: 'ider adding niaspan\n\n?DM:Recheck HgbA1c, cover w/ RISS as needed, nutrition consult for diet education,'
+
+Word: 'OSH'
+Filepath: './data/i2b2/i2b2_notes/224-01.txt'
+Tag [start, stop, word, phi-type]: '{'start': 5154, 'end': 5157, 'word': 'OSH', 'type': 'LOCATION'}'
+Match in context: 'al infarction by EKG and history transferred from OSH for cath and PCI. He is stable post-cath, with r'
+
+Word: 'DES'
+Filepath: './data/i2b2/i2b2_notes/225-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 4982, 'end': 4985, 'word': 'DES', 'type': 'NAME'}'
+Match in context: 'y graft stenosis, now s/p PTCA/stent to mid LAD w/DES\n\n \nPlan:\n\n \n1. Cardiac: HR/BP well controlled. Co'
+
+Word: 'CHOP'
+Filepath: './data/i2b2/i2b2_notes/248-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2631, 'end': 2635, 'word': 'CHOP', 'type': 'NAME'}'
+Match in context: 'regimen was a little harder on him than the CHOP regimen. He felt effects including fatigue and c'
+
+Word: 'DOE'
+Filepath: './data/i2b2/i2b2_notes/256-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 3141, 'end': 3144, 'word': 'DOE', 'type': 'NAME'}'
+Match in context: 'weight, energy, appetite, CP, palpitations, SOB, DOE, N/V/D/cough, fever, chills, rash, BRBPR, melena,'
+
+Word: 'URI'
+Filepath: './data/i2b2/i2b2_notes/279-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 485, 'end': 488, 'word': 'URI', 'type': 'NAME'}'
+Match in context: 'whitish sputum. She had no fevers/chills, prior URI symptoms/sick contacts, CP/lightheadedness, N/V/a'
+
+Word: 'V'
+Filepath: './data/i2b2/i2b2_notes/292-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 6008, 'end': 6009, 'word': 'V', 'type': 'NAME'}'
+Match in context: 'equested a thrombophilia workup, including factor V Leiden, prothrombin gene mutation, protein C and'
+
+Word: 'Leiden'
+Filepath: './data/i2b2/i2b2_notes/292-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 6010, 'end': 6016, 'word': 'Leiden', 'type': 'NAME'}'
+Match in context: 'uested a thrombophilia workup, including factor V Leiden, prothrombin gene mutation, protein C and S level'
+
+Word: '28 with B12'
+Filepath: './data/i2b2/i2b2_notes/299-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 966, 'end': 977, 'word': '28 with B12', 'type': 'LOCATION'}'
+Match in context: 'Problems\n\nPernicious anemia : In 3/64 HCT was 28 with B12 195. All other parameters nl. Has been getting mo'
+
+Word: '4-11'
+Filepath: './data/i2b2/i2b2_notes/322-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2645, 'end': 2649, 'word': '4-11', 'type': 'DATE'}'
+Match in context: 'ed with an insulin drip, which oscillates between 4-11 U/hr. He is being fed with Glucerna continuous T'
+
+Word: 'DOE'
+Filepath: './data/i2b2/i2b2_notes/329-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2169, 'end': 2172, 'word': 'DOE', 'type': 'NAME'}'
+Match in context: 'gh, mildly productive, but no fevers/chills, SOB, DOE, CP, hemoptysis, or any other sx, but is somewhat'
+
+Word: 'Ursula'
+Filepath: './data/i2b2/i2b2_notes/329-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 536, 'end': 542, 'word': 'Ursula', 'type': 'NAME'}'
+Match in context: 'ent this history is based on phone interview with Ursula Jacks who is the HCP and is very involved with hi'
+
+Word: 'Jacks'
+Filepath: './data/i2b2/i2b2_notes/329-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 543, 'end': 548, 'word': 'Jacks', 'type': 'NAME'}'
+Match in context: 's history is based on phone interview with Ursula Jacks who is the HCP and is very involved with his fath'
+
+Word: 'NSCLC, CT'
+Filepath: './data/i2b2/i2b2_notes/333-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 10128, 'end': 10137, 'word': 'NSCLC, CT', 'type': 'LOCATION'}'
+Match in context: 'e since previous, no other obvious progression of NSCLC, CT findings would not account for her dyspnea\n-CXR a'
+
+Word: 'Dru'
+Filepath: './data/i2b2/i2b2_notes/336-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2073, 'end': 2076, 'word': 'Dru', 'type': 'NAME'}'
+Match in context: 'Home Medications:\nASA, Furosemide, Gabapentin, K-Dru, Toprol, Zocor, Iron, Percocet, Stool softener, B'
+
+Word: 'Brendon Ambrose'
+Filepath: './data/i2b2/i2b2_notes/396-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 1699, 'end': 1714, 'word': 'Brendon Ambrose', 'type': 'NAME'}'
+Match in context: 'ahey Clinic and has just returned home. Her son, Brendon Ambrose who was the healthcare proxy, is here with her to'
