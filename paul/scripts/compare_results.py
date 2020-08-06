@@ -253,6 +253,7 @@ def main():
                     type=str)
     ap.add_argument("-o", "--outputdir",
                     help="",
+                    default=".",
                     type=str)
     ap.add_argument("-ops", "--options",
                     help="""Which files will be compared. The options are

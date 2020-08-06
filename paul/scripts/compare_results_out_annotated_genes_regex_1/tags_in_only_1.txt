@@ -1,0 +1,141 @@
+
+
+Word: 'ON'
+Filepath: './data/MIMIC/philter_files/without_tags/D0833E92134161.txt'
+Tag [start, stop, word, phi-type]: '{'start': 230, 'end': 232, 'word': 'ON', 'type': 'NAME'}'
+Match in context: '?DENIES PAIN, DIFFICULT TO COMMUNICATE WITH. CONT ON MS04 2MG/HR AND PROPOFOL NOW AT 20MCG/KG/MIN. MOR'
+
+Word: 'MS04'
+Filepath: './data/MIMIC/philter_files/without_tags/D0833E92134161.txt'
+Tag [start, stop, word, phi-type]: '{'start': 233, 'end': 237, 'word': 'MS04', 'type': 'CONTACT'}'
+Match in context: 'NIES PAIN, DIFFICULT TO COMMUNICATE WITH. CONT ON MS04 2MG/HR AND PROPOFOL NOW AT 20MCG/KG/MIN. MORE INT'
+
+Word: 'BICARB, CT'
+Filepath: './data/MIMIC/philter_files/without_tags/D2A61854C3F103.txt'
+Tag [start, stop, word, phi-type]: '{'start': 510, 'end': 520, 'word': 'BICARB, CT', 'type': 'LOCATION'}'
+Match in context: 'apos;S AT FIRST WERE ACIDOTIC NOW BETTER WITH X 2 BICARB, CT&apos;S DRAINING SCANT SEROSANG NO LEAK IN SYSTEM,'
+
+Word: 'RR'
+Filepath: './data/MIMIC/philter_files/without_tags/D3702CD0CACBC0.txt'
+Tag [start, stop, word, phi-type]: '{'start': 549, 'end': 551, 'word': 'RR', 'type': 'NAME'}'
+Match in context: 'ent. Pt was found\n with labored breathing with RR 43 and O2 sat 88% on 2 L NC.\n Ipratropium neb p'
+
+Word: '43 and O2'
+Filepath: './data/MIMIC/philter_files/without_tags/D3702CD0CACBC0.txt'
+Tag [start, stop, word, phi-type]: '{'start': 552, 'end': 561, 'word': '43 and O2', 'type': 'LOCATION'}'
+Match in context: '. Pt was found\n with labored breathing with RR 43 and O2 sat 88% on 2 L NC.\n Ipratropium neb provided at'
+
+Word: 'Sarah'
+Filepath: './data/MIMIC/philter_files/without_tags/D39AB5C7E13731.txt'
+Tag [start, stop, word, phi-type]: '{'start': 3365, 'end': 3370, 'word': 'Sarah', 'type': 'NAME'}'
+Match in context: 'new URI\n symptoms contributing.\n - f/u with C-Sarah rec: continue amiodarone gtt, start BB to reduce'
+
+Word: 'ND'
+Filepath: './data/MIMIC/philter_files/without_tags/D4C06553B5682D.txt'
+Tag [start, stop, word, phi-type]: '{'start': 1206, 'end': 1208, 'word': 'ND', 'type': 'NAME'}'
+Match in context: 'er FIO2 and PEEP.\n\nGI/GU: BS + X 4 quad, abd soft ND, OGT intact placement verified, no residual at 21'
+
+Word: 'TO'
+Filepath: './data/MIMIC/philter_files/without_tags/D638646CAC722B.txt'
+Tag [start, stop, word, phi-type]: '{'start': 1241, 'end': 1243, 'word': 'TO', 'type': 'NAME'}'
+Match in context: 'SSRI COVERAGE. FSBS 97 AT 2400, NO RX.\n\nGI: OGT TO LCS POST-OP. ABDOMEN OBESE, HYPOACTIVE BS.\n\nGU:'
+
+Word: 'Madison'
+Filepath: './data/MIMIC/philter_files/without_tags/D7E49545DDABAD.txt'
+Tag [start, stop, word, phi-type]: '{'start': 3213, 'end': 3220, 'word': 'Madison', 'type': 'NAME'}'
+Match in context: 'new URI\n symptoms contributing.\n - f/u with C-Madison rec: continue amiodarone gtt, start BB to reduce'
+
+Word: 'IS'
+Filepath: './data/MIMIC/philter_files/without_tags/D887C1DBD10EAC.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2698, 'end': 2700, 'word': 'IS', 'type': 'NAME'}'
+Match in context: 'SOFT, DISTENDED. BS X 4 QUADS, HYPOACTIVE. OGT IS SECURE AND PATENT. PROPER PLACEMENT AS PER AUSCU'
+
+Word: 'max'
+Filepath: './data/MIMIC/philter_files/without_tags/D9DEEFB3438D99.txt'
+Tag [start, stop, word, phi-type]: '{'start': 5811, 'end': 5814, 'word': 'max', 'type': 'NAME'}'
+Match in context: 't noted to have elevated\ncardiac enzymes, with Ck max of 4126, Ck-MB of 113, and MB index\nof 2.7, and T'
+
+Word: 'DES'
+Filepath: './data/MIMIC/philter_files/without_tags/DAD833F0069301.txt'
+Tag [start, stop, word, phi-type]: '{'start': 324, 'end': 327, 'word': 'DES', 'type': 'NAME'}'
+Match in context: 'Procedure:\n2174-6-18- cardiac catheterization w/ DES to LAD\n\n\nHistory of Present Illness:\nMr. Diaz is'
+
+Word: '10-22'
+Filepath: './data/MIMIC/philter_files/without_tags/DB81271480DC76.txt'
+Tag [start, stop, word, phi-type]: '{'start': 7642, 'end': 7647, 'word': '10-22', 'type': 'DATE'}'
+Match in context: 'nsulin, CKD IV,\nchronic dCHF who presented to OSH 10-22 with one day of fevers,\nCT scan concerning for pn'
+
+Word: 'DES'
+Filepath: './data/MIMIC/philter_files/without_tags/DBEA4720A601C6.txt'
+Tag [start, stop, word, phi-type]: '{'start': 9123, 'end': 9126, 'word': 'DES', 'type': 'NAME'}'
+Match in context: 'back to cath lab on\n2106-4-8 for repeat cath with DES placed to RCA. Patient\ntolerated procedure well'
+
+Word: 'SETTING'
+Filepath: './data/MIMIC/philter_files/without_tags/DD22F5FF90EE76.txt'
+Tag [start, stop, word, phi-type]: '{'start': 58, 'end': 65, 'word': 'SETTING', 'type': 'NAME'}'
+Match in context: 'SG 7A-7P\nRESP--PT REMAINS R., EVAN M. AND ON VENT SETTING AS FOLLOWS, AC 26 800 PEEP 5 40%. LATEST ABG 125'
+
+Word: 'AS'
+Filepath: './data/MIMIC/philter_files/without_tags/DD22F5FF90EE76.txt'
+Tag [start, stop, word, phi-type]: '{'start': 66, 'end': 68, 'word': 'AS', 'type': 'NAME'}'
+Match in context: 'RESP--PT REMAINS R., EVAN M. AND ON VENT SETTING AS FOLLOWS, AC 26 800 PEEP 5 40%. LATEST ABG 125/28'
+
+Word: 'FENT'
+Filepath: './data/MIMIC/philter_files/without_tags/DD22F5FF90EE76.txt'
+Tag [start, stop, word, phi-type]: '{'start': 1189, 'end': 1193, 'word': 'FENT', 'type': 'NAME'}'
+Match in context: 'HORETIC AND FLUSHED WITH FEVER.\nNEURO--REMIANS ON FENT 200MC/HR AND VERSED 3MG/HR WITH GOOD EFFECT, PT A'
+
+Word: 'Adam'
+Filepath: './data/MIMIC/philter_files/without_tags/DD589F64283EA1.txt'
+Tag [start, stop, word, phi-type]: '{'start': 3451, 'end': 3455, 'word': 'Adam', 'type': 'NAME'}'
+Match in context: 'energic response\n - will need to discuss with C-Adam in am when possible procedure could\n be carried'
+
+Word: 'ACE WRAP, CT'
+Filepath: './data/MIMIC/philter_files/without_tags/DDD3CB78281041.txt'
+Tag [start, stop, word, phi-type]: '{'start': 531, 'end': 543, 'word': 'ACE WRAP, CT', 'type': 'LOCATION'}'
+Match in context: 'AK.\nSKIN: STERNUM WITH TRANSPARENT DSD, RIGHT LEG ACE WRAP, CT SITE WITH TRANPARENT DSD, ALL SITES ARE C.D.I.\nGI'
+
+Word: 'GI'
+Filepath: './data/MIMIC/philter_files/without_tags/DE162BCD3D40C7.txt'
+Tag [start, stop, word, phi-type]: '{'start': 389, 'end': 391, 'word': 'GI', 'type': 'NAME'}'
+Match in context: 'NGS WITH DECREASED BREATH SOUNDS /EXP WHEEZES ...\nGI OGT CLAMPED ..MINIMAL ASPIRATES ...INC SMALL AMOU'
+
+Word: 'W'
+Filepath: './data/MIMIC/philter_files/without_tags/D15C396A0832C4.txt'
+Tag [start, stop, word, phi-type]: '{'start': 706, 'end': 707, 'word': 'W', 'type': 'NAME'}'
+Match in context: 'OPY.\n\nRESP: FULLY VENTED ON AC 500X20, 40%, 5PEEP W/ SRR 2 OVER VENT. STABLE ABG. LS COARSE, SXNED FO'
+
+Word: 'W'
+Filepath: './data/MIMIC/philter_files/without_tags/D34EAA827737D2.txt'
+Tag [start, stop, word, phi-type]: '{'start': 1926, 'end': 1927, 'word': 'W', 'type': 'NAME'}'
+Match in context: 'LITERS BUT INTRTAVASCULARLY DRY.\n\nGI: REMAINS NPO W/ OGT IN PLACE TO LCS W/ BILIOUS DNGE. ABD SOFT W/'
+
+Word: 'IN'
+Filepath: './data/MIMIC/philter_files/without_tags/D34EAA827737D2.txt'
+Tag [start, stop, word, phi-type]: '{'start': 1933, 'end': 1935, 'word': 'IN', 'type': 'NAME'}'
+Match in context: 'BUT INTRTAVASCULARLY DRY.\n\nGI: REMAINS NPO W/ OGT IN PLACE TO LCS W/ BILIOUS DNGE. ABD SOFT W/ HYPOACT'
+
+Word: 'TO'
+Filepath: './data/MIMIC/philter_files/without_tags/DE0F9C2FCB815C.txt'
+Tag [start, stop, word, phi-type]: '{'start': 355, 'end': 357, 'word': 'TO', 'type': 'NAME'}'
+Match in context: 'AL UPPER AIRWAY SECRETIONS. PEEP INCREASED FORM 5 TO 10 WITH INCREASED CT DRAINAGE. VENT WEANING TO EX'
+
+Word: '10 WITH INCREASED CT'
+Filepath: './data/MIMIC/philter_files/without_tags/DE0F9C2FCB815C.txt'
+Tag [start, stop, word, phi-type]: '{'start': 358, 'end': 378, 'word': '10 WITH INCREASED CT', 'type': 'LOCATION'}'
+Match in context: 'UPPER AIRWAY SECRETIONS. PEEP INCREASED FORM 5 TO 10 WITH INCREASED CT DRAINAGE. VENT WEANING TO EXTUBATION PLACED ON HO'
+
+Word: 'IN'
+Filepath: './data/MIMIC/philter_files/without_tags/DFB2116F6D554C.txt'
+Tag [start, stop, word, phi-type]: '{'start': 1056, 'end': 1058, 'word': 'IN', 'type': 'NAME'}'
+Match in context: 'T W/ HYPOACTIVE BS. REMAINS NPO AT THIS TIME. OGT IN PLACE FOR MEDS. PT UNABLE TO ATTEMPT SIP FROM STR'
+
+Word: 'OF'
+Filepath: './data/MIMIC/philter_files/without_tags/DFB2116F6D554C.txt'
+Tag [start, stop, word, phi-type]: '{'start': 1295, 'end': 1297, 'word': 'OF', 'type': 'NAME'}'
+Match in context: 'D SOME BLEEDING FROM ATTEMPT AT NGT AND PLACEMENT OF OGT.\nPLT CT 109.\n\nID: AFEBRILE.\n\nSKIN: R LE WRAPP'
+
+Word: 'HR AT THE DIRECTION OF'
+Filepath: './data/MIMIC/philter_files/without_tags/D9D4631155B4C6.txt'
+Tag [start, stop, word, phi-type]: '{'start': 395, 'end': 417, 'word': 'HR AT THE DIRECTION OF', 'type': 'NAME'}'
+Match in context: 'BER. BS PRESENT. NO BM. TF RATE INCREASED TO 60CC/HR AT THE DIRECTION OF NP GARDNER. 2157/HR RESIDUAL 100CC BILIOUS COLORE'

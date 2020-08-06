@@ -1,0 +1,294 @@
+False positives in dir1 and not dir2:
+
+filepath:	'./data/i2b2/i2b2_notes/106-04.txt'
+phi_type:	'None'
+match:	'OGT'
+start:	'3661'
+stop:	'3663'
+match in context:	'=12 SaO2=92-100% on FiO2 0.5\nGeneral: elderly Caucasian woman, intubated, sedated \nHEENT: PERRL, OGT in place with dark output on low vacuum to wall suction\nNeck: Supple, full ROM, no LAD , no cen'
+
+
+filepath:	'./data/i2b2/i2b2_notes/120-02.txt'
+phi_type:	'NAME'
+match:	'HA'
+start:	'441'
+stop:	'442'
+match in context:	'r f/u appts. Of note, pt was recently seen in ED for c/o\n"it felt like my BP was high". Pt had sl HA, but o/w denies confusion,\nlethargy, CP, SOB, visual changes, or generalized edema.\n \nPMHx: h/o tr'
+
+
+filepath:	'./data/i2b2/i2b2_notes/120-05.txt'
+phi_type:	'ID'
+match:	'SMA7'
+start:	'7285'
+stop:	'7288'
+match in context:	'ye surgery wtih Dr. Urbach 9/19/2078. Preop performed and await labs as above, including UA, CBC, SMA7, LFTs, EKG, and Coags ( see labs above for results)\n\n\n\n5. pyuria: mild UTI: levo 250 mg po qd x 3'
+
+
+filepath:	'./data/i2b2/i2b2_notes/152-03.txt'
+phi_type:	'NAME'
+match:	'Blocker'
+start:	'2096'
+stop:	'2102'
+match in context:	't in 4-6 weeks\n\n\n\nPump - F/U ECHO in 3 days, prior h/o CHF\n\n\n\nRhythm -- Had some NSVT, increase B-Blocker, monitor lytes\n\n\n\n \n\nFEN- Nexium, heparin SC \n\n\n\nUTI- Marodantin for 3 days \n\n\n\n\n\n\n\n\n\n__________'
+
+
+filepath:	'./data/i2b2/i2b2_notes/152-04.txt'
+phi_type:	'None'
+match:	'nauseau'
+start:	'355'
+stop:	'361'
+match in context:	'h/o CAD, DM2, and dyslipidemia, who was admitted 10 d ago with an inferior STEMI in the setting of nauseau and CP, who subsequently received BMS stents to the RPLV and mid RCA. Plavix was reloaded for 1 w'
+
+
+filepath:	'./data/i2b2/i2b2_notes/157-02.txt'
+phi_type:	'None'
+match:	'yo'
+start:	'31'
+stop:	'32'
+match in context:	''
+
+
+filepath:	'./data/i2b2/i2b2_notes/157-02.txt'
+phi_type:	'None'
+match:	'for'
+start:	'34'
+stop:	'36'
+match in context:	''
+
+
+filepath:	'./data/i2b2/i2b2_notes/157-02.txt'
+phi_type:	'None'
+match:	'CPE'
+start:	'38'
+stop:	'40'
+match in context:	''
+
+
+filepath:	'./data/i2b2/i2b2_notes/179-04.txt'
+phi_type:	'LOCATION'
+match:	'MRI'
+start:	'3162'
+stop:	'3164'
+match in context:	'recheck his indices today. He is not fatigued or pale.\n\n\n\nRenal carcinoma\n\nThe patient had repeat MRI and CT in January at the Healthwin Hospital. These were read as stable and he needs no interventi'
+
+
+filepath:	'./data/i2b2/i2b2_notes/179-04.txt'
+phi_type:	'None'
+match:	'and'
+start:	'3166'
+stop:	'3168'
+match in context:	'heck his indices today. He is not fatigued or pale.\n\n\n\nRenal carcinoma\n\nThe patient had repeat MRI and CT in January at the Healthwin Hospital. These were read as stable and he needs no intervention o'
+
+
+filepath:	'./data/i2b2/i2b2_notes/179-04.txt'
+phi_type:	'None'
+match:	'CT'
+start:	'3170'
+stop:	'3171'
+match in context:	'his indices today. He is not fatigued or pale.\n\n\n\nRenal carcinoma\n\nThe patient had repeat MRI and CT in January at the Healthwin Hospital. These were read as stable and he needs no intervention othe'
+
+
+filepath:	'./data/i2b2/i2b2_notes/185-03.txt'
+phi_type:	'NAME'
+match:	'BB'
+start:	'5790'
+stop:	'5791'
+match in context:	'diology\n\nCurrently on ASA and Plavix, will continue.\n\nContinue ACE, BUN and Creatine WNL.\n\nContinue BB, HR and BP well controlled.\n\nWill cycle cardiac enzymes.\n\nNPO for cardiac cath in am, pt will dye'
+
+
+filepath:	'./data/i2b2/i2b2_notes/224-01.txt'
+phi_type:	'LOCATION'
+match:	'OSH'
+start:	'5154'
+stop:	'5156'
+match in context:	'D, HTN, HL, presents with evidence of antero-lateral infarction by EKG and history transferred from OSH for cath and PCI. He is stable post-cath, with resolving EKG changes; had cypher stent to proxima'
+
+
+filepath:	'./data/i2b2/i2b2_notes/225-02.txt'
+phi_type:	'NAME'
+match:	'DES'
+start:	'4982'
+stop:	'4984'
+match in context:	'ans\nImpression: 69 yo with CAD, s/p CABG with early graft stenosis, now s/p PTCA/stent to mid LAD w/DES\n\n \nPlan:\n\n \n1. Cardiac: HR/BP well controlled. Continue current meds. Full dose ASA and plavix ind'
+
+
+filepath:	'./data/i2b2/i2b2_notes/247-03.txt'
+phi_type:	'None'
+match:	'K3'
+start:	'5234'
+stop:	'5235'
+match in context:	'Ref. Range Units\nWBC 13.4 H (4.0-11.0) K3/UL\nRBC 4.83 (4.5-5.9) K6/UL\nHGB'
+
+
+filepath:	'./data/i2b2/i2b2_notes/247-03.txt'
+phi_type:	'None'
+match:	'K3'
+start:	'6514'
+stop:	'6515'
+match in context:	'(0-3) %\nABSOLUTE NEUTROPHILS 11.7 H (1.8-7.7) K3/UL\nABSOLUTE LYMPHOCYTES 0.9 L (1.0-4.8) K3/UL\nRBC PARAMETERS'
+
+
+filepath:	'./data/i2b2/i2b2_notes/247-03.txt'
+phi_type:	'None'
+match:	'K3'
+start:	'6594'
+stop:	'6595'
+match in context:	'(1.8-7.7) K3/UL\nABSOLUTE LYMPHOCYTES 0.9 L (1.0-4.8) K3/UL\nRBC PARAMETERS NORMAL\n\nMicrobiology: None\n\nRadiology: None\n\nCardiogram:\n3/31/'
+
+
+filepath:	'./data/i2b2/i2b2_notes/279-02.txt'
+phi_type:	'NAME'
+match:	'URI'
+start:	'485'
+stop:	'487'
+match in context:	'ening SOB and developing cough productive of scant whitish sputum. She had no fevers/chills, prior URI symptoms/sick contacts, CP/lightheadedness, N/V/abdominal pain, diaphoresis, increasing leg swelli'
+
+
+filepath:	'./data/i2b2/i2b2_notes/292-04.txt'
+phi_type:	'None'
+match:	'gene'
+start:	'6030'
+stop:	'6033'
+match in context:	'inhibition. We have also requested a thrombophilia workup, including factor V Leiden, prothrombin gene mutation, protein C and S levels, antithrombin level and homocysteine and CRP today.\n\n\nOtherwise,'
+
+
+filepath:	'./data/i2b2/i2b2_notes/292-04.txt'
+phi_type:	'NAME'
+match:	'V'
+start:	'6008'
+stop:	'6008'
+match in context:	'for platelet function inhibition. We have also requested a thrombophilia workup, including factor V Leiden, prothrombin gene mutation, protein C and S levels, antithrombin level and homocysteine and'
+
+
+filepath:	'./data/i2b2/i2b2_notes/292-04.txt'
+phi_type:	'NAME'
+match:	'Leiden'
+start:	'6010'
+stop:	'6015'
+match in context:	'or platelet function inhibition. We have also requested a thrombophilia workup, including factor V Leiden, prothrombin gene mutation, protein C and S levels, antithrombin level and homocysteine and CRP to'
+
+
+filepath:	'./data/i2b2/i2b2_notes/299-03.txt'
+phi_type:	'LOCATION'
+match:	'28'
+start:	'966'
+stop:	'967'
+match in context:	'Prilosec (OMEPRAZOLE) 20MG, 1 Capsule(s) PO BID \n\n\n\n\n\nProblems\n\nPernicious anemia : In 3/64 HCT was 28 with B12 195. All other parameters nl. Has been getting monthly IM B12. Still feels tired. Will ch'
+
+
+filepath:	'./data/i2b2/i2b2_notes/299-03.txt'
+phi_type:	'None'
+match:	'with'
+start:	'969'
+stop:	'972'
+match in context:	'losec (OMEPRAZOLE) 20MG, 1 Capsule(s) PO BID \n\n\n\n\n\nProblems\n\nPernicious anemia : In 3/64 HCT was 28 with B12 195. All other parameters nl. Has been getting monthly IM B12. Still feels tired. Will check H'
+
+
+filepath:	'./data/i2b2/i2b2_notes/299-03.txt'
+phi_type:	'None'
+match:	'B12'
+start:	'974'
+stop:	'976'
+match in context:	'(OMEPRAZOLE) 20MG, 1 Capsule(s) PO BID \n\n\n\n\n\nProblems\n\nPernicious anemia : In 3/64 HCT was 28 with B12 195. All other parameters nl. Has been getting monthly IM B12. Still feels tired. Will check HCT t'
+
+
+filepath:	'./data/i2b2/i2b2_notes/324-05.txt'
+phi_type:	'None'
+match:	'G6PD'
+start:	'1705'
+stop:	'1708'
+match in context:	'percholesterolemia\n12. s/p left 5th toe amputation\n13. h/o C. dif colitis\n14. s/p ccy and appy\n15. G6PD deficiency\n\nMedications:\nNeoral 100mg bid po\nPrednisone 5/10mg qd po\nLopressor 50mg bid po\nLasix 8'
+
+
+filepath:	'./data/i2b2/i2b2_notes/329-02.txt'
+phi_type:	'NAME'
+match:	'DOE'
+start:	'2169'
+stop:	'2171'
+match in context:	'sumed PNA.\n\n\nOn the floor, the pt complains of cough, mildly productive, but no fevers/chills, SOB, DOE, CP, hemoptysis, or any other sx, but is somewhat of a poor historian. Of note, pt had recent che'
+
+
+filepath:	'./data/i2b2/i2b2_notes/333-03.txt'
+phi_type:	'LOCATION'
+match:	'NSCLC'
+start:	'10128'
+stop:	'10132'
+match in context:	'stinal and hilar lymph nodes have increased in size since previous, no other obvious progression of NSCLC, CT findings would not account for her dyspnea\n-CXR and CT negative for acute PNA\n-CXR and CT show'
+
+
+filepath:	'./data/i2b2/i2b2_notes/333-03.txt'
+phi_type:	'None'
+match:	'CT'
+start:	'10135'
+stop:	'10136'
+match in context:	'and hilar lymph nodes have increased in size since previous, no other obvious progression of NSCLC, CT findings would not account for her dyspnea\n-CXR and CT negative for acute PNA\n-CXR and CT show mil'
+
+
+filepath:	'./data/i2b2/i2b2_notes/336-04.txt'
+phi_type:	'NAME'
+match:	'Dru'
+start:	'2073'
+stop:	'2075'
+match in context:	'4\nR cubital tunnel release 2073\ncataract surgery\n \nHome Medications:\nASA, Furosemide, Gabapentin, K-Dru, Toprol, Zocor, Iron, Percocet, Stool softener, B12, D\n \nAllergies: PCN, Cephalexin, Quinolones, C'
+
+
+filepath:	'./data/i2b2/i2b2_notes/350-02.txt'
+phi_type:	'None'
+match:	'G6PD'
+start:	'1903'
+stop:	'1906'
+match in context:	'mall L A2 aneurysm. \n\n\nMrs. Doss continues to take Plavix for secondary stroke prevention (she has G6PD deficiency). Her dentist would like to take her off this medication for a week before an extensiv'
+
+
+filepath:	'./data/i2b2/i2b2_notes/350-04.txt'
+phi_type:	'None'
+match:	'G6PD'
+start:	'555'
+stop:	'558'
+match in context:	'Ruath Doss is a 60yo RHF with a history of poorly controlled DM, htn, hypercholesterolemia, and G6PD deficiency who is followed here in Neurology clinic for multiple small L frontoparietal strokes co'
+
+
+filepath:	'./data/i2b2/i2b2_notes/350-04.txt'
+phi_type:	'None'
+match:	'G6PD'
+start:	'1913'
+stop:	'1916'
+match in context:	'ns:\n\natenolol 50mg qday\n\nhctz 12.5mg qday\n\nLipitor 80mg qday\n\nclopidogrel 75mg qday (not on asa 2/2 G6PD deficiency)\n\ncitalopram 40mg qday\n\nglipizide 5mg qday\n\nCozaar 100mg qday\n\nMetformin 500mg bid\n\nDil'
+
+
+filepath:	'./data/i2b2/i2b2_notes/364-04.txt'
+phi_type:	'None'
+match:	'P63'
+start:	'5199'
+stop:	'5201'
+match in context:	'BNP1625H\n\n\n\n\n\n\n\n\n\n\n11/22/24\n\n\n\n\n\n5.3\n\n\n\\n\n\n11.1L\n\n\n/\n\n\n237\n\n\n\n/\n\n\n35.4L\n\n\n\\n\n\n\n\n\n \n\n\nP63\n\n\nL22\n\n\nE5\n\n\nBs0\n\n\n\nUSG1.010\n\n\nUAlbneg\n\n\nUBldneg\n\n\nULeukneg\n\n\nUNitneg\n\n\n\nUpH6.0\n\n\nUKetneg'
+
+
+filepath:	'./data/i2b2/i2b2_notes/364-04.txt'
+phi_type:	'None'
+match:	'L22'
+start:	'5205'
+stop:	'5207'
+match in context:	'BNP1625H\n\n\n\n\n\n\n\n\n\n\n11/22/24\n\n\n\n\n\n5.3\n\n\n\\n\n\n11.1L\n\n\n/\n\n\n237\n\n\n\n/\n\n\n35.4L\n\n\n\\n\n\n\n\n\n \n\n\nP63\n\n\nL22\n\n\nE5\n\n\nBs0\n\n\n\nUSG1.010\n\n\nUAlbneg\n\n\nUBldneg\n\n\nULeukneg\n\n\nUNitneg\n\n\n\nUpH6.0\n\n\nUKetneg'
+
+
+filepath:	'./data/i2b2/i2b2_notes/364-04.txt'
+phi_type:	'None'
+match:	'E5'
+start:	'5211'
+stop:	'5212'
+match in context:	'BNP1625H\n\n\n\n\n\n\n\n\n\n\n11/22/24\n\n\n\n\n\n5.3\n\n\n\\n\n\n11.1L\n\n\n/\n\n\n237\n\n\n\n/\n\n\n35.4L\n\n\n\\n\n\n\n\n\n \n\n\nP63\n\n\nL22\n\n\nE5\n\n\nBs0\n\n\n\nUSG1.010\n\n\nUAlbneg\n\n\nUBldneg\n\n\nULeukneg\n\n\nUNitneg\n\n\n\nUpH6.0\n\n\nUKetneg'
+
+
+filepath:	'./data/i2b2/i2b2_notes/393-05.txt'
+phi_type:	'NAME'
+match:	'MS'
+start:	'847'
+stop:	'848'
+match in context:	'he is currently taking Neurontin and Cymbalta to treat neuropathic pain, and her PCP started her on MS Contin in December since nothing else seemed to be helping. The pt states that the MS Contin help'
+
+
+
+False positives in dir2 and not dir1:
+
+No differences exist.

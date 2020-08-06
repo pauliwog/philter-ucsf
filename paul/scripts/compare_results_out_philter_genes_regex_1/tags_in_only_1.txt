@@ -1,0 +1,76 @@
+
+
+Word: '54 yo for CPE'
+Filepath: './data/i2b2/i2b2_notes/157-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 28, 'end': 41, 'word': '54 yo for CPE', 'type': 'LOCATION'}'
+Match in context: ''
+
+Word: 'HA'
+Filepath: './data/i2b2/i2b2_notes/120-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 441, 'end': 443, 'word': 'HA', 'type': 'NAME'}'
+Match in context: 'for c/o\n"it felt like my BP was high". Pt had sl HA, but o/w denies confusion,\nlethargy, CP, SOB, vis'
+
+Word: 'SMA7'
+Filepath: './data/i2b2/i2b2_notes/120-05.txt'
+Tag [start, stop, word, phi-type]: '{'start': 7285, 'end': 7289, 'word': 'SMA7', 'type': 'ID'}'
+Match in context: 'rmed and await labs as above, including UA, CBC, SMA7, LFTs, EKG, and Coags ( see labs above for result'
+
+Word: 'Blocker'
+Filepath: './data/i2b2/i2b2_notes/152-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2096, 'end': 2103, 'word': 'Blocker', 'type': 'NAME'}'
+Match in context: 'r h/o CHF\n\n\n\nRhythm -- Had some NSVT, increase B-Blocker, monitor lytes\n\n\n\n \n\nFEN- Nexium, heparin SC'
+
+Word: 'MRI and CT'
+Filepath: './data/i2b2/i2b2_notes/179-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 3162, 'end': 3172, 'word': 'MRI and CT', 'type': 'LOCATION'}'
+Match in context: 'pale.\n\n\n\nRenal carcinoma\n\nThe patient had repeat MRI and CT in January at the Healthwin Hospital. These were'
+
+Word: 'BB'
+Filepath: './data/i2b2/i2b2_notes/185-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 5790, 'end': 5792, 'word': 'BB', 'type': 'NAME'}'
+Match in context: 'e.\n\nContinue ACE, BUN and Creatine WNL.\n\nContinue BB, HR and BP well controlled.\n\nWill cycle cardiac e'
+
+Word: 'OSH'
+Filepath: './data/i2b2/i2b2_notes/224-01.txt'
+Tag [start, stop, word, phi-type]: '{'start': 5154, 'end': 5157, 'word': 'OSH', 'type': 'LOCATION'}'
+Match in context: 'al infarction by EKG and history transferred from OSH for cath and PCI. He is stable post-cath, with r'
+
+Word: 'DES'
+Filepath: './data/i2b2/i2b2_notes/225-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 4982, 'end': 4985, 'word': 'DES', 'type': 'NAME'}'
+Match in context: 'y graft stenosis, now s/p PTCA/stent to mid LAD w/DES\n\n \nPlan:\n\n \n1. Cardiac: HR/BP well controlled. Co'
+
+Word: 'URI'
+Filepath: './data/i2b2/i2b2_notes/279-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 485, 'end': 488, 'word': 'URI', 'type': 'NAME'}'
+Match in context: 'whitish sputum. She had no fevers/chills, prior URI symptoms/sick contacts, CP/lightheadedness, N/V/a'
+
+Word: 'V'
+Filepath: './data/i2b2/i2b2_notes/292-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 6008, 'end': 6009, 'word': 'V', 'type': 'NAME'}'
+Match in context: 'equested a thrombophilia workup, including factor V Leiden, prothrombin gene mutation, protein C and'
+
+Word: 'Leiden'
+Filepath: './data/i2b2/i2b2_notes/292-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 6010, 'end': 6016, 'word': 'Leiden', 'type': 'NAME'}'
+Match in context: 'uested a thrombophilia workup, including factor V Leiden, prothrombin gene mutation, protein C and S level'
+
+Word: '28 with B12'
+Filepath: './data/i2b2/i2b2_notes/299-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 966, 'end': 977, 'word': '28 with B12', 'type': 'LOCATION'}'
+Match in context: 'Problems\n\nPernicious anemia : In 3/64 HCT was 28 with B12 195. All other parameters nl. Has been getting mo'
+
+Word: 'DOE'
+Filepath: './data/i2b2/i2b2_notes/329-02.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2169, 'end': 2172, 'word': 'DOE', 'type': 'NAME'}'
+Match in context: 'gh, mildly productive, but no fevers/chills, SOB, DOE, CP, hemoptysis, or any other sx, but is somewhat'
+
+Word: 'NSCLC, CT'
+Filepath: './data/i2b2/i2b2_notes/333-03.txt'
+Tag [start, stop, word, phi-type]: '{'start': 10128, 'end': 10137, 'word': 'NSCLC, CT', 'type': 'LOCATION'}'
+Match in context: 'e since previous, no other obvious progression of NSCLC, CT findings would not account for her dyspnea\n-CXR a'
+
+Word: 'Dru'
+Filepath: './data/i2b2/i2b2_notes/336-04.txt'
+Tag [start, stop, word, phi-type]: '{'start': 2073, 'end': 2076, 'word': 'Dru', 'type': 'NAME'}'
+Match in context: 'Home Medications:\nASA, Furosemide, Gabapentin, K-Dru, Toprol, Zocor, Iron, Percocet, Stool softener, B'

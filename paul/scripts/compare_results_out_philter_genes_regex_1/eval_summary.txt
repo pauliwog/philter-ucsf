@@ -1,0 +1,85 @@
+
+
+tp
+dir1 : 30887
+dir2 : 30885
+difference (dir2 - dir1) : -2.0
+percentage difference ((dir2/dir1 - 1)*100) : -0.006475216110335413%
+
+fp
+dir1 : 12390
+dir2 : 12354
+difference (dir2 - dir1) : -36.0
+percentage difference ((dir2/dir1 - 1)*100) : -0.29055690072639084%
+
+tn
+dir1 : 480809
+dir2 : 480845
+difference (dir2 - dir1) : +36.0
+percentage difference ((dir2/dir1 - 1)*100) : +0.007487380643866892%
+
+fn
+dir1 : 3925
+dir2 : 3927
+difference (dir2 - dir1) : +2.0
+percentage difference ((dir2/dir1 - 1)*100) : +0.05095541401274328%
+
+precision
+dir1 : 0.7137047392379324
+dir2 : 0.7142857142857143
+difference (dir2 - dir1) : +0.0005809750477818731
+percentage difference ((dir2/dir1 - 1)*100) : +0.08140271681567057%
+
+recall
+dir1 : 0.8872515224635183
+dir2 : 0.8871940710099966
+difference (dir2 - dir1) : -5.745145352176184e-05
+percentage difference ((dir2/dir1 - 1)*100) : -0.006475216110335413%
+
+retention
+dir1 : 0.9748782945626411
+dir2 : 0.9749512874113695
+difference (dir2 - dir1) : +7.299284872841483e-05
+percentage difference ((dir2/dir1 - 1)*100) : +0.007487380643866892%
+
+ctp
+dir1 : 0
+dir2 : 0
+difference (dir2 - dir1) : 0.0
+percentage difference ((dir2/dir1 - 1)*100) : NA
+
+cfp
+dir1 : 43277
+dir2 : 43239
+difference (dir2 - dir1) : -38.0
+percentage difference ((dir2/dir1 - 1)*100) : -0.08780645608521542%
+
+ctn
+dir1 : 484734
+dir2 : 484772
+difference (dir2 - dir1) : +38.0
+percentage difference ((dir2/dir1 - 1)*100) : +0.007839351066762923%
+
+cfn
+dir1 : 0
+dir2 : 0
+difference (dir2 - dir1) : 0.0
+percentage difference ((dir2/dir1 - 1)*100) : NA
+
+cprecision
+dir1 : 0.0
+dir2 : 0.0
+difference (dir2 - dir1) : 0.0
+percentage difference ((dir2/dir1 - 1)*100) : NA
+
+crecall
+dir1 : 0
+dir2 : 0
+difference (dir2 - dir1) : 0.0
+percentage difference ((dir2/dir1 - 1)*100) : NA
+
+cretention
+dir1 : 0.91803769239656
+dir2 : 0.9181096605941922
+difference (dir2 - dir1) : +7.196819763222173e-05
+percentage difference ((dir2/dir1 - 1)*100) : +0.007839351066762923%

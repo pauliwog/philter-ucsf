@@ -80,7 +80,7 @@ def get_names(files, locations):
 
             for name in names_temp: # go through each name from the current file
 
-                n = str(name).strip()
+                n = str(name).strip().casefold() # strip and convert into lowercase
 
                 if " " in n: # if name comprises of two or more words, add to dict and skip
                     if n in two_word_names.values():
@@ -107,6 +107,11 @@ def check_wl(names, wl_in, con, start_time): # con is confirmation
 
     with open(wl_in) as fin:
         wl_dict = json.load(fin)
+
+    for item in wl_dict: # convert everything to lowercase
+        new_item = item.casefold()
+        del test_dict[item]
+        test_dict[new_item] = 1
 
     names_in_both = {} # values which exist in the whitelist
     removed_values = {} # values user chooses to remove
@@ -226,8 +231,8 @@ def main():
                     default="yes",
                     help="""Whether the user should be asked to "keep" or
                             "remove" each value which exists in the names and
-                            whitelist. Options are "yes" (remove everything
-                            without asking) or "no" (ask before removing each
+                            whitelist. Options are "no" (remove everything
+                            without asking) or "yes" (ask before removing each
                             value). Default is "yes".""",
                     type=str)
 

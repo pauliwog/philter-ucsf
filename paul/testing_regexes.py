@@ -3,6 +3,9 @@ import re
 with open("../filters/regex/genes_and_patho_terms/gene_symbols_safe_transformed.txt") as fin:
     test_regex = re.compile(fin.read())
 
+# with open("../filters/regex/genes_and_patho_terms/cassette_numbers_safe.txt") as fin:
+#     test_regex = re.compile(fin.read())
+
 # test_string = """True positives in dir1 and not dir2:
 #
 # filepath:	'./data/i2b2/i2b2_notes/157-02.txt'
@@ -126,6 +129,29 @@ with open("../filters/regex/genes_and_patho_terms/gene_symbols_safe_transformed.
 # MEDICATIONS: CIPRO 500MG PO bid : 12/01/2089 - 02/02/2090 ACT : ostrowski
 # Script: A"""
 
-test_string = "make sure to hold ace2 until tomorrow"
+# test_string = "make sure to hold ace2 until tomorrow"
+# test_string = "ith meals,\nErythropoietin, Premarin and Provera, Nephrox 150 mg tid, insulin\nNPH 10 units qam.\n \nOn July 17, after hemodialysis, Ms. Tinsley was given a partial\ndose of Vancomycin and developed pruritus."
+# test_string = "nimal anemia but with drop over past 4 months.\n\n\n\n\n\nALLERGIES: \n\nNo Known Drug Allergies 05/21/2087 ostrowski\n\n\n\n\n\nMEDICATIONS: \n\nLidex cream No Match bid prn up to 2 week : 01/09/2087 - 02/02/2090 ACT : ostr"
+test_string = """
+
+
+
+
+Record date: 2081-02-06
+
+54 yo for CPE
+
+
+
+MEDICATIONS
+
+
+
+FOLIC ACID      Tablet(s) PO
+
+VIT C (ASCORBIC ACID)      Capsule(s) PO
+
+
+"""
 
 print(test_regex.findall(test_string))

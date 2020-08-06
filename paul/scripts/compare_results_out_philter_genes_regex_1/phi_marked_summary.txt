@@ -1,0 +1,2 @@
+There were 15 tags in dir1 and not dir2.
+There were 0 tags in dir2 and not dir1.
