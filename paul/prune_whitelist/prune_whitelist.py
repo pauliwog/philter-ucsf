@@ -105,13 +105,16 @@ def check_wl(names, wl_in, con, start_time): # con is confirmation
     time.sleep(1)
     print("Reading existing whitelist...")
 
+    wl_dict = {}
+    wl_list_og = []
+    wl_list_casefold = []
+
     with open(wl_in) as fin:
         wl_dict = json.load(fin)
 
-    for item in wl_dict: # convert everything to lowercase
-        new_item = item.casefold()
-        del test_dict[item]
-        test_dict[new_item] = 1
+    for item in wl_dict: # add all items to two different lists, one original and the other casefolded
+        wl_list_casefold.append(item.casefold())
+        wl_list_og.append(item)
 
     names_in_both = {} # values which exist in the whitelist
     removed_values = {} # values user chooses to remove
@@ -121,8 +124,9 @@ def check_wl(names, wl_in, con, start_time): # con is confirmation
     print("Checking each value...")
 
     for name in names: # go through each name
-        if name in wl_dict: # check if name exists in whitelist
-            names_in_both[name] = names[name]
+        if name in wl_list_casefold: # check if name exists in whitelist
+            index = wl_list_casefold.index(name)
+            names_in_both[wl_list_og[index]] = names[name]
 
     names_exist = bool(names_in_both)
 
@@ -263,10 +267,18 @@ def main():
     names_in_both = check_wl(names, whitelist, con, start_time)
 
     if names_in_both is not None:
-        with open("prune_whitelist_out/names_in_whitelist.txt", "w") as fout: # output the names in the whitelist
+        with open("prune_whitelist_out/values_in_whitelist_origin.txt", "w") as fout: # output the names in the whitelist and which input list they were from
             for key in names_in_both:
                 s = str(key)+"    "+str(names_in_both[key])+"\n"
                 fout.write(s)
+        with open("prune_whitelist_out/values_in_whitelist.txt", "w") as fout: # output the names in the whitelist
+            for key in names_in_both:
+                s = str(key)+", "
+                fout.write(s)
+        with open("prune_whitelist_out/values_in_whitelist.txt", "r") as fout: # remove extra comma from the end
+            text = fout.read()
+            new_text = text.strip()[:-1]
+        with open("prune_whitelist_out/values_in_whitelist.txt", "w") as fout: fout.write(new_text)
 
     time.sleep(1)
 
