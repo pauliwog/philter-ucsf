@@ -9,13 +9,13 @@ Whitelists generally get used near the end of the pipeline, after Philter has id
 
 However, upon closer examination and testing, I discovered that multiple regular expressions earlier in the pipeline captured the gene symbols as names—which meant that the whitelist, being at the bottom of the pipeline, never had a chance at the symbols. To fix this, I created a "safe" regex which I put into the pipeline near the top, ahead of the regexes which were obscuring gene symbols. This new regex would get to the gene symbols ahead of the other regexes and mark them as safe. I used the same technique of creating a safe regex or whitelist to address the obscurement of pathology terms.
 
-I also worked with David, my fellow summer intern, a little (it was his project) to create xml annotations for the test set of notes I used. I only provided some advice and tested his results. The annotations are xml files, and for each phi in a clinical note they contain the (1) phi type, (2) actual value, (3) start and stop indices of the value, and (4) an ID. The reason why I'm mentioning these is because having annotations is crucial to testing any sort of thing with Philter—they allow Philter to evaluate it's performance. For example, Philter, using one of these files, can identify real phi it obscured (true positives), which values it obscured but were actually safe (false positives), false and true negatives, etc, and then calculate metrics about its performance (eg. precision, recall, retention). So in order to determine how much the whitelists/safe regexes helped, I needed to create annotations for my test set.
+I also worked with David, my fellow summer intern, a little (it was his project) to create xml annotations for the test set of notes I used. I only provided some advice and tested his results. The annotations are xml files, and for each phi in a clinical note they contain the (1) phi type, (2) actual value, (3) start and stop indices of the value, and (4) an ID. The reason why I'm mentioning it is because having annotations is crucial to testing any sort of thing with Philter—they allow Philter to evaluate it's performance. For example, Philter, using one of these files, can identify real phi it obscured (true positives), which values it obscured but were actually safe (false positives), false and true negatives, etc, and then calculate metrics about its performance (eg. precision, recall, retention). So in order to determine how much the whitelists/safe regexes helped, I needed to create annotations for my test set.
 
-If some of my scripts are confusing, check out [details_on_scripts.md](https://github.com/pauliwog/philter-ucsf/blob/master/paul_genes/details_on_scripts.md).
+If some of my scripts are confusing, check out [details_on_scripts.md](https://github.com/pauliwog/philter-ucsf/blob/master/paul/details_on_scripts.md).
 
-Here is [my change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul_genes/CHANGE_LOG.md) which should have everything I added or modified.
+Here is [my change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul/CHANGE_LOG.md) which should have everything I added or modified.
 
-And [the README](https://github.com/pauliwog/philter-ucsf/blob/master/paul_genes/README.md) for the "paul_genes" folder gives an overview of what all my files are.
+And [the README](https://github.com/pauliwog/philter-ucsf/blob/master/paul/README.md) for the "paul" folder gives an overview of what all my files are.
 
 I gave [a presentation](https://docs.google.com/presentation/d/1dwseCcnEa1EtzFrpq7rRdgu64vwN-EiCecOAL3dY6nU/edit?usp=sharing) about my work which gives a good overview of what I did and how my modifications turned out (not quite up to date though).
 
@@ -87,11 +87,11 @@ When I got Philter-Zeta, it came with a virtual environment, but it didn't work 
 <img align="right" width=60% src="https://i.pinimg.com/originals/47/1b/d4/471bd4e085c6e09ef892a809afff8ba1.png">
 
 1. There's this really nice website, [genenames.org](https://www.genenames.org/) (called HGNC), which has an easy, customizable form for downloading gene data ([link to form](https://biomart.genenames.org/martform/#!/default/HGNC?datasets=hgnc_gene_mart)). It takes the data from NCBI gene banks (or other places if you so choose). I downloaded all the gene symbols and names from NCBI, which included approved, alias, and previous symbols/names for each gene (see example on right).
-2. Once that was downloaded, I created a script ([HGNC_symbols_to_json.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul_genes/gene_symbols/HGNC_symbols_to_json.py)) to extract the gene symbols from the HGNC download and create a json file containing each symbol, in the correct format for Philter to use as a whitelist. This script read the HGNC list and used regex to extract the gene symbols from it.
+2. Once that was downloaded, I created a script ([HGNC_symbols_to_json.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/gene_symbols/HGNC_symbols_to_json.py)) to extract the gene symbols from the HGNC download and create a json file containing each symbol, in the correct format for Philter to use as a whitelist. This script read the HGNC list and used regex to extract the gene symbols from it.
 3. Philter runs using a config file, which tells it what to do, and in what order. To get Philter to use the whitelist I created, I first duplicated the original config file and added a section (more details in Part 5) telling Philter to use the whitelist. I chose to create a separate config file for testing because it is easy to switch between config files when running Philter (the ``` -f path/to/configfile.json``` option).
 
 ### Parts 2 and 3
-1. Next, I wanted a test set of notes containing gene symbols, so I compiled a list of 35 common symbols ([common_symbols.txt](https://github.com/pauliwog/philter-ucsf/blob/master/paul_genes/common_symbols.txt)) to search for in the MIMIC notes.
+1. Next, I wanted a test set of notes containing gene symbols, so I compiled a list of 35 common symbols ([common_symbols.txt](https://github.com/pauliwog/philter-ucsf/blob/master/paul/common_symbols.txt)) to search for in the MIMIC notes.
 2. I then searched for those symbols in all the MIMIC notes using the Unix ```grep``` command and copied the notes containing the common symbols into a new directory.
 ```bash
    grep -l -r -w -f path/to/common_symbols.txt path/to/dir/containing/notes/to/search/in/ > path/to/outputfile.txt
@@ -99,7 +99,7 @@ When I got Philter-Zeta, it came with a virtual environment, but it didn't work 
 ```bash
    for file in `cat path/to/outputfile.txt`; do cp "$file" path/to/dir/where/the/files/with/the/gene/symbols/will/go/ ; done
 ```
-3. After this was done, I ended up with ~20,000 notes, and running 20,000 notes through Philter all at once would take weeks on my laptop (and I didn't have enough memory anyway), so I created a short script ([batch.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul_genes/scripts/batch.py)) which took the notes and separated them into folders containing the same number of notes each (I chose 1,000 notes per folder—so 20 batches). I then ran these folders through Philter (without the whitelist) five at a time. There's a reverse script to unbatch files which I created as well, [unbatch.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul_genes/scripts/unbatch.py).
+3. After this was done, I ended up with ~20,000 notes, and running 20,000 notes through Philter all at once would take weeks on my laptop (and I didn't have enough memory anyway), so I created a short script ([batch.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/scripts/batch.py)) which took the notes and separated them into folders containing the same number of notes each (I chose 1,000 notes per folder—so 20 batches). I then ran these folders through Philter (without the whitelist) five at a time. There's a reverse script to unbatch files which I created as well, [unbatch.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/scripts/unbatch.py).
 ```bash
     python3 batch.py -i path/to/dir/with/files/to/be/batched/ -o path/to/dir/where/batched/files/will/go/ -n number_of_files_per_batch
 ```
@@ -107,7 +107,7 @@ When I got Philter-Zeta, it came with a virtual environment, but it didn't work 
 ```bash
    grep -n -r -w -f common_symbols.txt dir/with/original/notes/ > path/to/another/outputfile.txt
 ```
-5. Using my script ([find_obscured_symbols.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul_genes/scripts/find_obscured_symbols.py)) and the grep search from the previous step, I went through all the MIMIC notes looking for notes containing obscured gene symbols. My script also has an option to copy the notes containing the symbols to a new directory, which I used. _Original_ means the notes which were input to Philter. _Annotated_ means the notes which have been run through Philter and have phi obscured with asterisks.
+5. Using my script ([find_obscured_symbols.py](https://github.com/pauliwog/philter-ucsf/blob/master/paul/scripts/find_obscured_symbols.py)) and the grep search from the previous step, I went through all the MIMIC notes looking for notes containing obscured gene symbols. My script also has an option to copy the notes containing the symbols to a new directory, which I used. _Original_ means the notes which were input to Philter. _Annotated_ means the notes which have been run through Philter and have phi obscured with asterisks.
 ```bash
    python3 find_obscured_symbols.py -o path/to/dir/with/original/notes/ -a path/to/dir/with/annotated/notes/ -g path/to/grep/output/file/from/step/four.txt -s path/to/list/of/common_symbols.txt -c copy -d path/to/dir/where/notes/will/be/copied/to/
 ```
@@ -124,7 +124,7 @@ So instead, I decided to create a safe regex, one that would catch the gene symb
 This safe regex went at the top of the config file because it needed to get to the gene symbols before the phi regexes could. This placement was deemed safe because the regex was specific and therefore unlikely to catch non-gene symbols or real phi.
 
 ### Part 6
-I then tested my regex and whitelist on the MIMIC test set with annotations, tightened my regex based on the results, and eventually got everything working! Next, we wanted to test my additions to Philter on the UCSF data using the latest code, so I created a [change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul_genes/CHANGE-LOG.md) so Lakshmi could merge my additions to the latest code (which wasn't allowed access to). Once the merge was completed, Lakshmi tested it on the UCSF data. The results were also good—of course after a couple little modifications.
+I then tested my regex and whitelist on the MIMIC test set with annotations, tightened my regex based on the results, and eventually got everything working! Next, we wanted to test my additions to Philter on the UCSF data using the latest code, so I created a [change-log](https://github.com/pauliwog/philter-ucsf/blob/master/paul/CHANGE-LOG.md) so Lakshmi could merge my additions to the latest code (which wasn't allowed access to). Once the merge was completed, Lakshmi tested it on the UCSF data. The results were also good—of course after a couple little modifications.
 
 
 ## A closer look at the pathology terms project

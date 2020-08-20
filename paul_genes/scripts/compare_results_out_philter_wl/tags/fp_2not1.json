@@ -1,0 +1,50 @@
+[
+    {
+        "filepath": "./data/MIMIC/philter_files/without_tags/DD22F5FF90EE76.txt",
+        "phi_type": "None",
+        "match": "VENT",
+        "start": "53",
+        "stop": "56",
+        "context": ""
+    },
+    {
+        "filepath": "./data/MIMIC/philter_files/without_tags/DD22F5FF90EE76.txt",
+        "phi_type": "None",
+        "match": "SETTING",
+        "start": "58",
+        "stop": "64",
+        "context": ""
+    },
+    {
+        "filepath": "./data/MIMIC/philter_files/without_tags/DD22F5FF90EE76.txt",
+        "phi_type": "None",
+        "match": "AS",
+        "start": "66",
+        "stop": "67",
+        "context": ""
+    },
+    {
+        "filepath": "./data/MIMIC/philter_files/without_tags/DD22F5FF90EE76.txt",
+        "phi_type": "None",
+        "match": "FOLLOWS",
+        "start": "69",
+        "stop": "75",
+        "context": ""
+    },
+    {
+        "filepath": "./data/MIMIC/philter_files/without_tags/DD22F5FF90EE76.txt",
+        "phi_type": "None",
+        "match": "AC",
+        "start": "78",
+        "stop": "79",
+        "context": ""
+    },
+    {
+        "filepath": "./data/MIMIC/philter_files/without_tags/DDAB6896DD33B9.txt",
+        "phi_type": "None",
+        "match": "sat99",
+        "start": "1268",
+        "stop": "1272",
+        "context": "ille, California 94533 for cardiac\\narrest hypothermia protocol. Vital on transfer: BP 120s, HR70,\\nO2sat99% on 100%FiO2. OSH labs: tot bili 0.7, Alkph=48, AST=53,\\nCK=560, MB=11.1, Trop=?, Valproic acid lev"
+    }
+]
